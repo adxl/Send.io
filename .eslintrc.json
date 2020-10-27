@@ -1,0 +1,36 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "semi": "error",
+        "no-unused-vars": "warn",
+        "indent": [
+            "warn",
+            "tab"
+        ],
+        "react/jsx-indent": [
+            "warn",
+            "tab"
+        ],
+        "no-mixed-spaces-and-tabs": "warn",
+        "no-tabs": "off",
+        "no-await-in-loop": "off"
+    }
+}
