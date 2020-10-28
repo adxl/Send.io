@@ -1,10 +1,14 @@
 import React from 'react';
-import Test from './Components/Test';
+import Conversation from './components/Conversation';
+import { Socketprovider } from './contexts/SocketProvider';
 
-function App() {
+export default function App() {
+	const id = localStorage.getItem('send-io-userid');
 	return (
-		<Test />
+		<>
+			<Socketprovider id={id}>
+				<Conversation id={id} />
+			</Socketprovider>
+		</>
 	);
 }
-
-export default App;
