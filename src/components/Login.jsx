@@ -33,7 +33,7 @@ export default function Login() {
 		}).then((token) => {
 			if (token) {
 				console.log(token);
-				localStorage.setItem('send-io-userid', token);
+				localStorage.setItem('send-io-usertoken', token);
 			}
 		}).catch((error) => { console.log(error); });
 	};

@@ -1,18 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Conversation from './components/Conversation';
 import { Socketprovider } from './contexts/SocketProvider';
+import Friends from './Friends';
 
-export default function Dashboard({ id }) {
+export default function Dashboard() {
 	return (
 		<>
-			<Socketprovider id={id}>
-				<Conversation id={id} />
+			<Socketprovider>
+				<Conversation />
 			</Socketprovider>
+			<Friends />
 		</>
 	);
 }
-
-Dashboard.propTypes = {
-	id: PropTypes.string.isRequired,
-};

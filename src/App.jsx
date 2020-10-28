@@ -3,11 +3,11 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 
 export default function App() {
-	const id = localStorage.getItem('send-io-userid');
+	const userToken = localStorage.getItem('send-io-usertoken');
 
 	return (
 		<>
-			{ id ? <Dashboard id={id} /> : <Home />}
+			{ userToken ? <Dashboard token={userToken} /> : <Home />}
 		</>
 	);
 }

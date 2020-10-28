@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useSocket } from '../contexts/SocketProvider';
 
-export default function Conversation({ id }) {
+export default function Conversation() {
 	const messageInput = useRef();
 	const socket = useSocket();
 
 	function sendMessage(e) {
 		e.preventDefault();
 		const message = messageInput.current.value;
-		socket.emit('send-message', { sender: id, message });
+		socket.emit('send-message', { sender: 'senderId', message });
 		console.log(message);
 	}
 
@@ -28,6 +28,6 @@ export default function Conversation({ id }) {
 	);
 }
 
-Conversation.propTypes = {
-	id: PropTypes.string.isRequired,
-};
+// Conversation.propTypes = {
+// 	id: PropTypes.string.isRequired,
+// };
