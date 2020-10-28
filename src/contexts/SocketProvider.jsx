@@ -9,7 +9,7 @@ export function useSocket() {
 	return useContext(SocketContext);
 }
 
-export function Socketprovider({ id }) {
+export function Socketprovider({ id, children }) {
 	const [socket, setSocket] = useState();
 
 	useEffect(() => {
@@ -25,11 +25,13 @@ export function Socketprovider({ id }) {
 	}, [id]);
 
 	return (
-
-		<SocketContext.Provider value={socket} />
+		<SocketContext.Provider value={socket}>
+			{children}
+		</SocketContext.Provider>
 	);
 }
 
 Socketprovider.propTypes = {
 	id: PropTypes.string.isRequired,
+	children: PropTypes.element.isRequired,
 };
