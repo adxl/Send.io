@@ -1,16 +1,13 @@
 import React from 'react';
-import Conversation from './components/Conversation';
-import { Socketprovider } from './contexts/SocketProvider';
-import Login from './components/Login';
+import Home from './Home';
+import Dashboard from './Dashboard';
 
 export default function App() {
-	// const id = localStorage.getItem('send-io-userid');
+	const id = localStorage.getItem('send-io-userid');
+
 	return (
 		<>
-			<Login />
-			{/* <Socketprovider id={id}>
-				<Conversation id={id} />
-			</Socketprovider> */}
+			{ id ? <Dashboard id={id} /> : <Home />}
 		</>
 	);
 }

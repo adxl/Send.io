@@ -24,29 +24,26 @@ export default function Login() {
 			body: JSON.stringify(data),
 		};
 
-		fetch('http://localhost:4000/login', options)
-			.then((response) => {
-				if (response.ok) {
-					return response.text();
-				}
-				setAlert('Wrong username and/or password');
-				throw new Error('BAD REQUEST');
-			})
-			.then((token) => {
-				if (token) {
-					console.log(token);
-					localStorage.setItem('send-io-userId', token);
-				}
-			})
-			.catch((error) => { console.log(error); });
+		fetch('http://localhost:4000/login', options).then((response) => {
+			if (response.ok) {
+				return response.text();
+			}
+			setAlert('Wrong username and/or password');
+			throw new Error('BAD REQUEST');
+		}).then((token) => {
+			if (token) {
+				console.log(token);
+				localStorage.setItem('send-io-userid', token);
+			}
+		}).catch((error) => { console.log(error); });
 	};
 
 	return (
 		<>
-			<Container className="login-cont d-flex align-items-center justify-content-center ">
+			<Container className="auth-cont d-flex align-items-center justify-content-center ">
 				<Form onSubmit={handleLogin}>
 
-					<h3 className="mb-3 text-center">Welcome to Send.io</h3>
+					<h3 className="mb-3 text-center">Login</h3>
 					<p className="mb-2 mt-2 text-center text-danger">{alert}</p>
 
 					<Form.Group controlId="formBasicEmail" className="d-flex  justify-content-center">

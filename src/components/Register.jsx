@@ -31,7 +31,7 @@ export default function Login() {
 			<Container className="auth-cont d-flex align-items-center justify-content-center ">
 				<Form onSubmit={handleRegister}>
 
-					<h3 className="mb-3 text-center">Welcome to Send.io</h3>
+					<h3 className="mb-3 text-center">Register</h3>
 
 					<Form.Group controlId="formBasicEmail" className="d-flex  justify-content-center">
 						<Form.Control ref={usernameRef} type="text" placeholder="Username" required />
@@ -41,7 +41,7 @@ export default function Login() {
 						<Form.Control ref={passwordRef} type="password" placeholder="Password" required />
 					</Form.Group>
 
-					<Button type="submit" className="w-100">Register</Button>
+					<Button type="submit" variant="success" className="w-100">Register</Button>
 
 				</Form>
 			</Container>
