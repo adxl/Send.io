@@ -7,7 +7,7 @@ export default function App() {
 
 	return (
 		<>
-			{ userToken ? <Dashboard token={userToken} /> : <Home />}
+			{ userToken ? <Dashboard /> : <Home />}
 		</>
 	);
 }
