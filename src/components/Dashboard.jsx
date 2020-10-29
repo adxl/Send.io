@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import { Socketprovider } from '../contexts/SocketProvider';
 import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
@@ -23,11 +23,22 @@ export default function Dashboard() {
 			.catch((error) => { throw error; });
 	}, []);
 
+	const handleLogout = (e) => {
+		localStorage.removeItem('send-io-usertoken');
+	};
+
 	return (
 		<>
 			<p>
 				Hello {username}<span className="text-muted">#{code}</span>
 			</p>
+
+			<Form onSubmit={handleLogout}>
+				<Button type="submit">
+					Logout
+				</Button>
+			</Form>
+
 			<Container className="d-flex align-items-center justify-content-center">
 				<ConversationsSideBar />
 				<Socketprovider>

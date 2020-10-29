@@ -34,6 +34,7 @@ export default function Login() {
 			if (token) {
 				console.log(token);
 				localStorage.setItem('send-io-usertoken', token);
+				window.location.reload();
 			}
 		}).catch((error) => { console.log(error); });
 	};
@@ -49,7 +50,7 @@ export default function Login() {
 					<Form.Group controlId="formBasicEmail" className="d-flex  justify-content-center">
 						<Form.Control ref={usernameRef} type="text" placeholder="Username" required />
 						<Form.Text className="text-muted h4 ml-2 mr-2">#</Form.Text>
-						<Form.Control ref={codeRef} type="text" placeholder="code" required />
+						<Form.Control ref={codeRef} type="number" placeholder="code" required />
 					</Form.Group>
 
 					<Form.Group controlId="formBasicPassword">
