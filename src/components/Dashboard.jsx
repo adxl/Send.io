@@ -4,6 +4,7 @@ import { Socketprovider } from '../contexts/SocketProvider';
 import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
 import Friends from './Friends';
+import Invites from './Invites';
 
 export default function Dashboard() {
 	const [username, setUsername] = useState();
@@ -44,7 +45,10 @@ export default function Dashboard() {
 				<Socketprovider>
 					<Conversation />
 				</Socketprovider>
-				<Friends />
+				<Container className="">
+					<Invites />
+					<Friends />
+				</Container>
 			</Container>
 		</>
 	);

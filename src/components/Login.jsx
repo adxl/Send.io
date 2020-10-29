@@ -41,13 +41,13 @@ export default function Login() {
 
 	return (
 		<>
-			<Container className="auth-cont d-flex align-items-center justify-content-center ">
+			<Container className="auth-cont d-flex align-items-center justify-content-center">
 				<Form onSubmit={handleLogin}>
 
 					<h3 className="mb-3 text-center">Login</h3>
 					<p className="mb-2 mt-2 text-center text-danger">{alert}</p>
 
-					<Form.Group controlId="formBasicEmail" className="d-flex  justify-content-center">
+					<Form.Group controlId="formBasicEmail" className="d-flex justify-content-center">
 						<Form.Control ref={usernameRef} type="text" placeholder="Username" required />
 						<Form.Text className="text-muted h4 ml-2 mr-2">#</Form.Text>
 						<Form.Control ref={codeRef} type="number" placeholder="code" required />
