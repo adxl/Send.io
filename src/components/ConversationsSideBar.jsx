@@ -23,15 +23,18 @@ export default function ConversationsSideBar() {
 				<h2>Conversations</h2>
 				<div className="border ">
 					{conversations.length > 0
-						? conversations.map((c) => (
-							<div key={c.id}>
-								<p>
-									{c.friend}
-								</p>
+						? conversations.map((c) => {
+							const friend = c.friend.split('#')[0];
+							return ((
+								<div key={c.id}>
+									<p>
+										{friend}
+									</p>
 
-							</div>
-						))
-						: <p>No friends</p>}
+								</div>
+							));
+						})
+						: <p>No conversations</p>}
 				</div>
 
 			</Container>
