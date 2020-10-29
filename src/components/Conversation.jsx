@@ -16,7 +16,7 @@ export default function Conversation() {
 
 	return (
 		<>
-			<Container>
+			<Container className="border d-flex align-items-center justify-content-center ">
 				<Form onSubmit={sendMessage}>
 					<Form.Group>
 						<Form.Control required placeholder="Type a message" ref={messageInput} type="text" />
