@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
+import Invites from './Invites';
 
 export default function Friends() {
 	const [friends, setFriends] = useState([]);
@@ -18,24 +19,33 @@ export default function Friends() {
 			.catch((error) => { throw error; });
 	}, []);
 
+	const handleUnfriend = (e) => {
+		e.preventDefault();
+
+		const data = {
+			friendId: e.target.value,
+		};
+		alert(data.friendId);
+	};
+
 	return (
 		<>
 			<Container className="border">
 				<h1>Friends</h1>
 				<br />
-				<div className="border ">
+				<Container className="border ">
 					{friends.length > 0
 						? friends.map((f) => (
-							<div key={f.id}>
+							<Container key={f.id} className="d-flex align-items-center">
 								<p>
 									{f.username}
 									<span className="text-muted">#{f.code}</span>
 								</p>
-
-							</div>
+								<Button variant="danger" type="button" value={f.id} onClick={handleUnfriend}>Unfriend</Button>
+							</Container>
 						))
 						: <p>No friends</p>}
-				</div>
+				</Container>
 			</Container>
 		</>
 	);
