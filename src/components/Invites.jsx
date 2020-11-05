@@ -27,7 +27,22 @@ export default function Invites() {
 		const data = {
 			friend: searchUsernameRef.current.value,
 		};
-		console.log(data);
+
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('send-io-usertoken'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch(`${URL}/invites/send`, options)
+			.then((response) => response.text())
+			.then((message) => {
+				console.log(message);
+			})
+			.catch((error) => { throw error; });
 	};
 
 	const handleDenyRequest = (e) => {
@@ -36,7 +51,22 @@ export default function Invites() {
 		const data = {
 			friend: e.target.value,
 		};
-		alert(data.friendId);
+
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('send-io-usertoken'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch(`${URL}/invites/deny`, options)
+			.then((response) => response.text())
+			.then((message) => {
+				window.location.reload();
+			})
+			.catch((error) => { throw error; });
 	};
 
 	const handleAcceptRequest = (e) => {
@@ -45,7 +75,22 @@ export default function Invites() {
 		const data = {
 			friend: e.target.value,
 		};
-		alert(data.friendId);
+
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('send-io-usertoken'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch(`${URL}/invites/accept`, options)
+			.then((response) => response.text())
+			.then((message) => {
+				window.location.reload();
+			})
+			.catch((error) => { throw error; });
 	};
 
 	return (
