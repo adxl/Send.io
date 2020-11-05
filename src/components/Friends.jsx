@@ -26,7 +26,22 @@ export default function Friends() {
 		const data = {
 			friend: e.target.value,
 		};
-		alert(data.friend);
+
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('send-io-usertoken'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		};
+
+		fetch(`${URL}/friends/unfriend`, options)
+			.then((response) => response.text())
+			.then((message) => {
+				window.location.reload();
+			})
+			.catch((error) => { throw error; });
 	};
 
 	return (
@@ -36,15 +51,12 @@ export default function Friends() {
 				<br />
 				<Container className="border ">
 					{friends.length > 0
-						? friends.map((f) => {
-							const { user } = f;
-							return (
-								<Container key={user} className="d-flex align-items-center">
-									<p>{user}</p>
-									<Button variant="danger" type="button" value={user} onClick={handleUnfriend}>Unfriend</Button>
-								</Container>
-							);
-						})
+						? friends.map((f) => (
+							<Container key={f} className="d-flex align-items-center">
+								<p>{f}</p>
+								<Button variant="danger" type="button" value={f} onClick={handleUnfriend}>Unfriend</Button>
+							</Container>
+						))
 						: <p>No friends</p>}
 				</Container>
 			</Container>
