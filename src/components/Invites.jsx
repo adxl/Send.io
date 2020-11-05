@@ -64,9 +64,12 @@ export default function Invites() {
 		};
 
 		fetch(`${URL}/invites/deny`, options)
-			.then((response) => response.text())
-			.then((message) => {
-				window.location.reload();
+			.then((response) => {
+				if (response.ok) {
+					window.location.reload();
+				} else {
+					throw new Error('An error occured');
+				}
 			})
 			.catch((error) => { throw error; });
 	};
@@ -88,9 +91,12 @@ export default function Invites() {
 		};
 
 		fetch(`${URL}/invites/accept`, options)
-			.then((response) => response.text())
-			.then((message) => {
-				window.location.reload();
+			.then((response) => {
+				if (response.ok) {
+					window.location.reload();
+				} else {
+					throw new Error('An error occured');
+				}
 			})
 			.catch((error) => { throw error; });
 	};
