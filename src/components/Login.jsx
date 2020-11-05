@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
+const URL = 'https://send-io.herokuapp.com';
+
 export default function Login() {
 	const [alert, setAlert] = useState();
 
@@ -12,11 +14,9 @@ export default function Login() {
 		e.preventDefault();
 
 		const data = {
-			id: `${usernameRef.current.value}#${codeRef.current.value}`,
+			username: usernameRef.current.value,
 			password: passwordRef.current.value,
 		};
-
-		console.log(data);
 
 		const options = {
 			method: 'POST',
@@ -24,7 +24,7 @@ export default function Login() {
 			body: JSON.stringify(data),
 		};
 
-		fetch('http://localhost:4000/login', options).then((response) => {
+		fetch(`${URL}/login`, options).then((response) => {
 			if (response.ok) {
 				return response.text();
 			}
@@ -32,7 +32,6 @@ export default function Login() {
 			throw new Error('BAD REQUEST');
 		}).then((token) => {
 			if (token) {
-				console.log(token);
 				localStorage.setItem('send-io-usertoken', token);
 				window.location.reload();
 			}
@@ -49,8 +48,6 @@ export default function Login() {
 
 					<Form.Group controlId="formBasicEmail" className="d-flex justify-content-center">
 						<Form.Control ref={usernameRef} type="text" placeholder="Username" required />
-						<Form.Text className="text-muted h4 ml-2 mr-2">#</Form.Text>
-						<Form.Control ref={codeRef} type="number" placeholder="code" required />
 					</Form.Group>
 
 					<Form.Group controlId="formBasicPassword">
