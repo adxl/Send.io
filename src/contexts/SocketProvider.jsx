@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import io from 'socket.io-client';
 
@@ -31,7 +31,7 @@ export function Socketprovider({ id, children }) {
 	);
 }
 
-Socketprovider.propTypes = {
-	id: PropTypes.string.isRequired,
-	children: PropTypes.element.isRequired,
-};
+// Socketprovider.propTypes = {
+// 	id: PropTypes.string.isRequired,
+// 	children: PropTypes.element.isRequired,
+// };
