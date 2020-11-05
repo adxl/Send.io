@@ -6,12 +6,13 @@ import ConversationsSideBar from './ConversationsSideBar';
 import Friends from './Friends';
 import Invites from './Invites';
 
+const URL = 'https://send-io.herokuapp.com';
+
 export default function Dashboard() {
 	const [username, setUsername] = useState();
-	const [code, setCode] = useState();
 
 	useEffect(() => {
-		fetch('http://localhost:4000/users/me', {
+		fetch(`${URL}/users/me`, {
 			headers: {
 				Authorization: localStorage.getItem('send-io-usertoken'),
 			},
@@ -19,36 +20,35 @@ export default function Dashboard() {
 			.then((response) => response.json())
 			.then((data) => {
 				setUsername(data.username);
-				setCode(data.code);
 			})
 			.catch((error) => { throw error; });
 	}, []);
 
-	const handleLogout = (e) => {
+	const handleLogout = () => {
 		localStorage.removeItem('send-io-usertoken');
 	};
 
 	return (
 		<>
-			<p>
-				Hello {username}<span className="text-muted">#{code}</span>
-			</p>
+			<p>Hello {username}</p>
 
 			<Form onSubmit={handleLogout}>
-				<Button type="submit">
-					Logout
-				</Button>
+				<Button type="submit">Logout</Button>
 			</Form>
 
 			<Container className="d-flex align-items-center justify-content-center">
+
 				<ConversationsSideBar />
+
 				<Socketprovider>
 					<Conversation />
 				</Socketprovider>
-				<Container className="">
+
+				<Container>
 					<Invites />
 					<Friends />
 				</Container>
+
 			</Container>
 		</>
 	);

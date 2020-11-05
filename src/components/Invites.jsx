@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 
+const URL = 'https://send-io.herokuapp.com';
+
 export default function Invites() {
 	const [invites, setInvites] = useState([]);
 
 	const searchUsernameRef = useRef();
-	const searchCodeRef = useRef();
 
 	useEffect(() => {
-		fetch('http://localhost:4000/invites', {
+		fetch(`${URL}/invites`, {
 			headers: {
 				Authorization: localStorage.getItem('send-io-usertoken'),
 			},
@@ -24,7 +25,7 @@ export default function Invites() {
 		e.preventDefault();
 
 		const data = {
-			id: `${searchUsernameRef.current.value}#${searchCodeRef.current.value}`,
+			friend: searchUsernameRef.current.value,
 		};
 		console.log(data);
 	};
@@ -33,7 +34,7 @@ export default function Invites() {
 		e.preventDefault();
 
 		const data = {
-			friendId: e.target.value,
+			friend: e.target.value,
 		};
 		alert(data.friendId);
 	};
@@ -42,7 +43,7 @@ export default function Invites() {
 		e.preventDefault();
 
 		const data = {
-			friendId: e.target.value,
+			friend: e.target.value,
 		};
 		alert(data.friendId);
 	};
@@ -54,8 +55,6 @@ export default function Invites() {
 					<h3>Add friend</h3>
 					<Form.Group className="d-flex justify-content-center">
 						<Form.Control ref={searchUsernameRef} type="text" placeholder="Username" required />
-						<Form.Text className="text-muted h4 ml-2 mr-2">#</Form.Text>
-						<Form.Control ref={searchCodeRef} type="text" placeholder="Code" required />
 					</Form.Group>
 					<Button type="submit" className="w-100">Add</Button>
 				</Form>
@@ -63,16 +62,16 @@ export default function Invites() {
 				{invites.length > 0 && (
 					<Container className="border">
 						<h3>Invites</h3>
-						{invites.map((i) => (
-							<Container key={i.id} className="d-flex align-items-center justify-content-center">
-								<p>
-									{i.username}
-									<span className="text-muted">#{i.code}</span>
-								</p>
-								<Button variant="success" type="button" value={i.id} onClick={handleAcceptRequest}>Accept</Button>
-								<Button variant="danger" type="button" value={i.id} onClick={handleDenyRequest}>Deny</Button>
-							</Container>
-						))}
+						{invites.map((i) => {
+							const { user } = i;
+							return (
+								<Container key={user} className="d-flex align-items-center justify-content-center">
+									<p>{user}</p>
+									<Button variant="success" type="button" value={user} onClick={handleAcceptRequest}>Accept</Button>
+									<Button variant="danger" type="button" value={user} onClick={handleDenyRequest}>Deny</Button>
+								</Container>
+							);
+						})}
 					</Container>
 				)}
 			</Container>
