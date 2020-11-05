@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 
+const URL = 'https://send-io.herokuapp.com';
+
 export default function ConversationsSideBar() {
 	const [conversations, setConversations] = useState([]);
 
 	useEffect(() => {
-		fetch('http://localhost:4000/conversations', {
+		fetch(`${URL}/conversations`, {
 			headers: {
 				Authorization: localStorage.getItem('send-io-usertoken'),
 			},
@@ -24,9 +26,9 @@ export default function ConversationsSideBar() {
 				<div className="border ">
 					{conversations.length > 0
 						? conversations.map((c) => {
-							const friend = c.friend.split('#')[0];
+							const { friend } = c;
 							return ((
-								<div key={c.id}>
+								<div key={friend}>
 									<p>
 										{friend}
 									</p>

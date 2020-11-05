@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
 const SocketContext = React.createContext();
+const URL = 'https://send-io.herokuapp.com';
 
 export function useSocket() {
 	return useContext(SocketContext);
@@ -13,15 +14,15 @@ export function Socketprovider({ id, children }) {
 	const [socket, setSocket] = useState();
 
 	useEffect(() => {
-		const newSocket = io(
-			'http://localhost:4000',
-			{
-				query: { id },
-				reconnection: false,
-			},
-		);
-		setSocket(newSocket);
-		return () => newSocket.close();
+		// const newSocket = io(
+		// 	URL,
+		// 	{
+		// 		query: { id },
+		// 		reconnection: false,
+		// 	},
+		// );
+		// setSocket(newSocket);
+		// return () => newSocket.close();
 	}, [id]);
 
 	return (
