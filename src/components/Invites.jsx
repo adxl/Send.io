@@ -5,6 +5,7 @@ const URL = 'https://send-io.herokuapp.com';
 
 export default function Invites() {
 	const [invites, setInvites] = useState([]);
+	const [inviteAlert, setInviteAlert] = useState();
 
 	const searchUsernameRef = useRef();
 
@@ -40,7 +41,8 @@ export default function Invites() {
 		fetch(`${URL}/invites/send`, options)
 			.then((response) => response.text())
 			.then((message) => {
-				console.log(message);
+				setInviteAlert(message);
+				searchUsernameRef.current.value = '';
 			})
 			.catch((error) => { throw error; });
 	};
@@ -101,6 +103,7 @@ export default function Invites() {
 					<Form.Group className="d-flex justify-content-center">
 						<Form.Control ref={searchUsernameRef} type="text" placeholder="Username" required />
 					</Form.Group>
+					<p>{inviteAlert}</p>
 					<Button type="submit" className="w-100">Add</Button>
 				</Form>
 				<br />
