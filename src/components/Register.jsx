@@ -1,9 +1,7 @@
 import React, { useRef } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
-const URL = 'https://send-io.herokuapp.com';
-
-export default function Login() {
+export default function Login({ URL }) {
 	const usernameRef = useRef();
 	const passwordRef = useRef();
 
