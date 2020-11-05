@@ -1,29 +1,11 @@
 import React, { useRef } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
+const URL = 'https://send-io.herokuapp.com';
+
 export default function Login() {
 	const usernameRef = useRef();
 	const passwordRef = useRef();
-
-	const login = (id, password) => {
-		const options = {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ id, password }),
-		};
-
-		fetch('http://localhost:4000/login', options).then((response) => {
-			if (response.ok) {
-				return response.text();
-			}
-			throw new Error('BAD REQUEST');
-		}).then((token) => {
-			if (token) {
-				localStorage.setItem('send-io-usertoken', token);
-				window.location.reload();
-			}
-		}).catch((error) => { console.log(error); });
-	};
 
 	const handleRegister = (e) => {
 		e.preventDefault();
@@ -39,12 +21,15 @@ export default function Login() {
 			body: JSON.stringify(data),
 		};
 
-		fetch('http://localhost:4000/register', options).then((response) => {
+		fetch(`${URL}/register`, options).then((response) => {
 			if (response.ok) {
-				return response.text();
+				return response.text(); // token
 			} throw new Error('An error occured');
-		}).then((id) => {
-			login(id, data.password);
+		}).then((token) => {
+			if (token) {
+				localStorage.setItem('send-io-usertoken', token);
+				window.location.reload();
+			}
 		}).catch((error) => { throw error; });
 	};
 
