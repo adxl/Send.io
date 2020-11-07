@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
+import React from 'react';
 import { Container, Button } from 'react-bootstrap';
+import { useFriendship } from './FriendshipsProvider';
 
 const URL = 'https://send-io.herokuapp.com';
 
 export default function Friends() {
-	const [friends, setFriends] = useState([]);
+	const { friends, fetchFriends } = useFriendship();
 
-	useEffect(() => {
-		fetch(`${URL}/friends`, {
-			headers: {
-				Authorization: localStorage.getItem('send-io-usertoken'),
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setFriends(data);
-			})
-			.catch((error) => { throw error; });
-	}, []);
+	console.log('render friends');
 
 	const handleUnfriend = (e) => {
 		e.preventDefault();
@@ -39,7 +28,7 @@ export default function Friends() {
 		fetch(`${URL}/friends/unfriend`, options)
 			.then((response) => {
 				if (response.ok) {
-					window.location.reload();
+					fetchFriends();
 				} else {
 					throw new Error('An error occured');
 				}

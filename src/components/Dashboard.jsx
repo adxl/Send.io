@@ -3,6 +3,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import { Socketprovider } from '../contexts/SocketProvider';
 import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
+import { FriendshipsProvider } from './FriendshipsProvider';
 import Friends from './Friends';
 import Invites from './Invites';
 
@@ -44,10 +45,12 @@ export default function Dashboard() {
 					<Conversation />
 				</Socketprovider>
 
-				<Container>
-					<Invites />
-					<Friends />
-				</Container>
+				<FriendshipsProvider>
+					<Container>
+						<Invites />
+						<Friends />
+					</Container>
+				</FriendshipsProvider>
 
 			</Container>
 		</>

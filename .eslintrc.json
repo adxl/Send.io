@@ -34,6 +34,7 @@
         "no-await-in-loop": "off",
         "no-console": "off",
         "react/jsx-one-expression-per-line": "off",
-        "react/prop-types":"off"
+        "react/prop-types":"off",
+        "object-curly-newline":"off"
     }
 }

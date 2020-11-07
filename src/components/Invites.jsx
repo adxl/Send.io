@@ -1,26 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
+import { useFriendship } from './FriendshipsProvider';
 
 const URL = 'https://send-io.herokuapp.com';
 
 export default function Invites() {
-	const [invites, setInvites] = useState([]);
+	const { invites, fetchInvites, fetchFriends } = useFriendship();
+
+	console.log('render invites');
+
 	const [inviteAlert, setInviteAlert] = useState();
 
 	const searchUsernameRef = useRef();
-
-	useEffect(() => {
-		fetch(`${URL}/invites`, {
-			headers: {
-				Authorization: localStorage.getItem('send-io-usertoken'),
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setInvites(data);
-			})
-			.catch((error) => { throw error; });
-	}, []);
 
 	const handleAddFriend = (e) => {
 		e.preventDefault();
@@ -66,7 +57,7 @@ export default function Invites() {
 		fetch(`${URL}/invites/deny`, options)
 			.then((response) => {
 				if (response.ok) {
-					window.location.reload();
+					fetchInvites();
 				} else {
 					throw new Error('An error occured');
 				}
@@ -93,7 +84,8 @@ export default function Invites() {
 		fetch(`${URL}/invites/accept`, options)
 			.then((response) => {
 				if (response.ok) {
-					window.location.reload();
+					fetchInvites();
+					fetchFriends();
 				} else {
 					throw new Error('An error occured');
 				}
