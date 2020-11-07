@@ -7,8 +7,6 @@ const URL = 'https://send-io.herokuapp.com';
 export default function Friends() {
 	const { friends, fetchFriends } = useFriendship();
 
-	console.log('render friends');
-
 	const handleUnfriend = (e) => {
 		e.preventDefault();
 

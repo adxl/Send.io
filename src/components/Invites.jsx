@@ -7,8 +7,6 @@ const URL = 'https://send-io.herokuapp.com';
 export default function Invites() {
 	const { invites, fetchInvites, fetchFriends } = useFriendship();
 
-	console.log('render invites');
-
 	const [inviteAlert, setInviteAlert] = useState();
 
 	const searchUsernameRef = useRef();

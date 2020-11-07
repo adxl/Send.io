@@ -13,7 +13,6 @@ export function FriendshipsProvider({ children }) {
 	const URL = 'https://send-io.herokuapp.com';
 
 	const fetchInvites = () => {
-		console.log(' will fetch invites');
 		fetch(`${URL}/invites`, {
 			headers: {
 				Authorization: localStorage.getItem('send-io-usertoken'),
@@ -27,8 +26,6 @@ export function FriendshipsProvider({ children }) {
 	};
 
 	const fetchFriends = () => {
-		console.log(' will fetch friends');
-
 		fetch(`${URL}/friends`, {
 			headers: {
 				Authorization: localStorage.getItem('send-io-usertoken'),
