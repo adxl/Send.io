@@ -8,7 +8,7 @@ export default function ConversationsSideBar() {
 	const [conversations, setConversations] = useState([]);
 	const [modalOpen, setModalOpen] = useState(false);
 
-	useEffect(() => {
+	const fetchConversations = () => {
 		fetch(`${URL}/conversations`, {
 			headers: {
 				Authorization: localStorage.getItem('send-io-usertoken'),
@@ -19,6 +19,10 @@ export default function ConversationsSideBar() {
 				setConversations(data);
 			})
 			.catch((error) => { throw error; });
+	};
+
+	useEffect(() => {
+		fetchConversations();
 	}, []);
 
 	const deleteConversation = (e) => {
@@ -37,6 +41,7 @@ export default function ConversationsSideBar() {
 				if (!response.ok) {
 					throw new Error('Error');
 				}
+				fetchConversations();
 			})
 			.catch((error) => { console.log(error); });
 	};
@@ -70,7 +75,7 @@ export default function ConversationsSideBar() {
 				</div>
 
 				<Modal show={modalOpen} onHide={hideModal}>
-					<NewConversationModal hideModal={hideModal} />
+					<NewConversationModal hideModal={hideModal} fetchConversations={fetchConversations} />
 				</Modal>
 
 			</Container>

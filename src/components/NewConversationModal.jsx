@@ -3,7 +3,7 @@ import { Form, Modal, Button } from 'react-bootstrap';
 
 const URL = 'https://send-io.herokuapp.com';
 
-export default function NewConversationModal({ hideModal }) {
+export default function NewConversationModal({ hideModal, fetchConversations }) {
 	const [alert, setAlert] = useState();
 
 	const friendInput = useRef();
@@ -26,6 +26,7 @@ export default function NewConversationModal({ hideModal }) {
 			.then((response) => {
 				if (response.ok) {
 					hideModal();
+					fetchConversations();
 				}
 				return response.text();
 			})
