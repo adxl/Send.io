@@ -4,6 +4,7 @@ import { Socketprovider } from '../contexts/SocketProvider';
 import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
 import { FriendshipsProvider } from '../contexts/FriendshipsProvider';
+import { ConversationProvider } from '../contexts/ConversationProvider';
 import Friends from './Friends';
 import Invites from './Invites';
 
@@ -40,11 +41,12 @@ export default function Dashboard() {
 
 			<Container fluid className="d-flex justify-content-between h-100 m-0 mt-4 border ">
 
-				<ConversationsSideBar />
-
-				<Socketprovider>
-					<Conversation />
-				</Socketprovider>
+				<ConversationProvider>
+					<ConversationsSideBar />
+					<Socketprovider>
+						<Conversation />
+					</Socketprovider>
+				</ConversationProvider>
 
 				<FriendshipsProvider>
 					<Container className="d-flex flex-column">

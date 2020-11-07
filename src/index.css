@@ -15,6 +15,10 @@ code {
 
 }
 
+p{
+    margin:0;
+}
+
 .auth-cont {
     height: 100vh;
 }

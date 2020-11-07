@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Modal } from 'react-bootstrap';
 import NewConversationModal from './NewConversationModal';
+import { useConversation } from '../contexts/ConversationProvider';
 
 const URL = 'https://send-io.herokuapp.com';
 
 export default function ConversationsSideBar() {
 	const [conversations, setConversations] = useState([]);
 	const [modalOpen, setModalOpen] = useState(false);
+	const { selectConversation } = useConversation();
 
 	const fetchConversations = () => {
 		fetch(`${URL}/conversations`, {
@@ -65,8 +67,8 @@ export default function ConversationsSideBar() {
 					{conversations.length > 0
 						? conversations.map((c) => (
 							<Container key={c} className="d-flex align-items-center justify-content-between border">
-								<p>
-									{c}
+								<p className="border w-100">
+									<Button variant="white" className="border w-100 text-left" onClick={() => selectConversation(c)}>{c}</Button>
 								</p>
 								<Button type="button" value={c} variant="danger" onClick={deleteConversation}>X</Button>
 							</Container>
