@@ -30,15 +30,15 @@ export default function Dashboard() {
 	};
 
 	return (
-		<>
-			<Container fluid className="d-flex justify-content-between">
+		<Container fluid className="d-flex flex-column h-100 m-0 p-0 border">
+			<Container fluid className="d-flex justify-content-between m-0 border">
 				<h3>Hello {username}</h3>
 				<Form onSubmit={handleLogout}>
 					<Button type="submit">Logout</Button>
 				</Form>
 			</Container>
 
-			<Container className="d-flex align-items-center justify-content-center">
+			<Container fluid className="d-flex justify-content-between h-100 m-0 mt-4 border ">
 
 				<ConversationsSideBar />
 
@@ -54,6 +54,6 @@ export default function Dashboard() {
 				</FriendshipsProvider>
 
 			</Container>
-		</>
+		</Container>
 	);
 }

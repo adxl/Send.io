@@ -52,17 +52,19 @@ export default function ConversationsSideBar() {
 	return (
 		<>
 			<Container className="border">
-				<h2>Conversations</h2>
-				<Button type="button" onClick={openModal}>+</Button>
+				<Container className="d-flex align-items-center justify-content-between border">
+					<h3>Conversations</h3>
+					<Button type="button" onClick={openModal}>+</Button>
+				</Container>
 				<div className="border ">
 					{conversations.length > 0
 						? conversations.map((c) => (
-							<div key={c}>
+							<Container key={c} className="d-flex align-items-center justify-content-between border">
 								<p>
 									{c}
 								</p>
 								<Button type="button" value={c} variant="danger" onClick={deleteConversation}>X</Button>
-							</div>
+							</Container>
 						))
 						: <p>No conversations</p>}
 				</div>

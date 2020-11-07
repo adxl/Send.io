@@ -44,7 +44,7 @@ export default function Friends() {
 				<Container className="border ">
 					{friends.length > 0
 						? friends.map((f) => (
-							<Container key={f} className="d-flex align-items-center justify-content-between border">
+							<Container key={f} className="d-flex align-items-baseline justify-content-between border">
 								<p className="">{f}</p>
 								<Button className="border" variant="danger" type="button" value={f} onClick={handleUnfriend}>Unfriend</Button>
 							</Container>

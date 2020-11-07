@@ -16,13 +16,17 @@ export default function Conversation() {
 
 	return (
 		<>
-			<Container className="border d-flex align-items-center justify-content-center ">
+			<Container className="border d-flex align-items-end justify-content-center p-0">
+
 				<Form onSubmit={sendMessage}>
-					<Form.Group>
-						<Form.Control required placeholder="Type a message" ref={messageInput} type="text" />
-					</Form.Group>
-					<Button type="submit">Send</Button>
+					<Container className="border d-flex align-items-end justify-content-between p-0">
+						<Form.Group className="m-0">
+							<Form.Control required placeholder="Type a message" ref={messageInput} type="text" />
+						</Form.Group>
+						<Button type="submit">Send</Button>
+					</Container>
 				</Form>
+
 			</Container>
 		</>
 	);
