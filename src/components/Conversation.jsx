@@ -18,10 +18,10 @@ export default function Conversation() {
 		<>
 			<Container className="border d-flex align-items-end justify-content-center p-0">
 
-				<Form onSubmit={sendMessage}>
-					<Container className="border d-flex align-items-end justify-content-between p-0">
-						<Form.Group className="m-0">
-							<Form.Control required placeholder="Type a message" ref={messageInput} type="text" />
+				<Form onSubmit={sendMessage} className="w-100">
+					<Container className="border d-flex align-items-end justify-content-between p-0 w-100">
+						<Form.Group className="m-0 w-100">
+							<Form.Control className="w-100" required placeholder="Type a message" ref={messageInput} type="text" />
 						</Form.Group>
 						<Button type="submit">Send</Button>
 					</Container>
