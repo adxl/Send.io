@@ -31,11 +31,12 @@ export default function Dashboard() {
 
 	return (
 		<>
-			<p>Hello {username}</p>
-
-			<Form onSubmit={handleLogout}>
-				<Button type="submit">Logout</Button>
-			</Form>
+			<Container fluid className="d-flex justify-content-between">
+				<h3>Hello {username}</h3>
+				<Form onSubmit={handleLogout}>
+					<Button type="submit">Logout</Button>
+				</Form>
+			</Container>
 
 			<Container className="d-flex align-items-center justify-content-center">
 
@@ -46,7 +47,7 @@ export default function Dashboard() {
 				</Socketprovider>
 
 				<FriendshipsProvider>
-					<Container>
+					<Container className="d-flex flex-column">
 						<Invites />
 						<Friends />
 					</Container>

@@ -48,7 +48,7 @@ export default function Login({ URL }) {
 					</Form.Group>
 
 					<Form.Group controlId="formBasicPassword">
-						<Form.Control ref={passwordRef} type="password" placeholder="Password" required />
+						<Form.Control ref={passwordRef} value="pass" type="password" placeholder="Password" required />
 					</Form.Group>
 
 					<Button type="submit" className="w-100">Login</Button>
