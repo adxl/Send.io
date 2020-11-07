@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
-import { useFriendship } from './FriendshipsProvider';
+import { useFriendship } from '../contexts/FriendshipsProvider';
 
 const URL = 'https://send-io.herokuapp.com';
 

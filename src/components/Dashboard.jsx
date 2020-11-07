@@ -3,7 +3,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import { Socketprovider } from '../contexts/SocketProvider';
 import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
-import { FriendshipsProvider } from './FriendshipsProvider';
+import { FriendshipsProvider } from '../contexts/FriendshipsProvider';
 import Friends from './Friends';
 import Invites from './Invites';
 
