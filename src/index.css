@@ -1,32 +1,43 @@
 body {
-    margin: 0;
-    height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	height: 100vh;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 #root{
-    height: 100vh;
-    max-height: 100vh;
+	height: 100vh;
+	max-height: 100vh;
 }
 
 #header{
-    height: 8vh;
+	height: 8vh;
 }
 
 #main{
-    height: 92vh;
+	height: 92vh;
 }
 
 p{
-    margin:0;
+	margin:0;
 }
 
 .auth-cont {
-    height: 100vh;
+	height: 100vh;
+}
+
+#chat-container::-webkit-scrollbar {
+	display: none;
+	overflow-y: scroll;
+}
+  
+#chat-container {
+	overflow-y: scroll;
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
 }

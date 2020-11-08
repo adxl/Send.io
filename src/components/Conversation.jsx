@@ -59,9 +59,9 @@ export default function Conversation({ username }) {
 			{conversation
 			// mb-auto
 				?	(
-					<Container className="border d-flex flex-column p-0">
+					<Container className="border d-flex flex-column p-0 h-100">
 						<h5 className="border mb-auto p-2"> {conversation.friend}</h5>
-						<Container className="border" style={{ 'overflow-y': 'scroll' }}>
+						<Container id="chat-container" className="border">
 							{messages.length > 0
 								? messages.map((m) => {
 									if (m.sender === username) {

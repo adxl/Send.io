@@ -58,7 +58,7 @@ export default function ConversationsSideBar() {
 
 	return (
 		<>
-			<Container className="border">
+			<Container className="border p-0">
 				<Container className="d-flex align-items-center justify-content-between border">
 					<h3>Conversations</h3>
 					<Button type="button" onClick={openModal}>+</Button>

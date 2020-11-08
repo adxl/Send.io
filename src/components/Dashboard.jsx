@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Col, Row, Form, Button } from 'react-bootstrap';
 import { Socketprovider } from '../contexts/SocketProvider';
 import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
@@ -32,6 +32,7 @@ export default function Dashboard() {
 
 	return (
 		<Container fluid className="d-flex flex-column h-100 m-0 p-0">
+
 			<Container fluid id="header" className="d-flex justify-content-between m-0 pt-2">
 				<h3>Hello {username}</h3>
 				<Form onSubmit={handleLogout}>
@@ -39,23 +40,30 @@ export default function Dashboard() {
 				</Form>
 			</Container>
 
-			<Container fluid id="main" className="d-flex justify-content-between m-0 pt-4">
-
-				<ConversationProvider>
-					<ConversationsSideBar />
-					<Socketprovider username={username}>
-						<Conversation username={username} />
-					</Socketprovider>
-				</ConversationProvider>
-
-				<FriendshipsProvider>
-					<Container className="d-flex flex-column">
-						<Invites />
-						<Friends />
-					</Container>
-				</FriendshipsProvider>
-
-			</Container>
+			<Row id="main" className="d-flex justify-content-between m-0 pt-4">
+				<Col xs={9} className="p-0 h-100">
+					<Row className="m-0 h-100">
+						<ConversationProvider>
+							<Col xs={4} className="p-0">
+								<ConversationsSideBar />
+							</Col>
+							<Col xs={8} className="p-0 h-100">
+								<Socketprovider username={username}>
+									<Conversation username={username} />
+								</Socketprovider>
+							</Col>
+						</ConversationProvider>
+					</Row>
+				</Col>
+				<Col xs={3} className="p-0">
+					<FriendshipsProvider>
+						<Container className="d-flex flex-column p-0">
+							<Invites />
+							<Friends />
+						</Container>
+					</FriendshipsProvider>
+				</Col>
+			</Row>
 		</Container>
 	);
 }
