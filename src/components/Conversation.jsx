@@ -16,7 +16,6 @@ export default function Conversation({ username }) {
 	const fetchMessages = () => {
 		if (conversation) {
 			const { friend } = conversation;
-
 			fetch(`${URL}/conversations/${friend}/messages`, {
 				headers: {
 					Authorization: localStorage.getItem('send-io-usertoken'),
@@ -44,6 +43,7 @@ export default function Conversation({ username }) {
 		};
 		socket.emit('send-message', message);
 		messageInput.current.value = '';
+		fetchMessages();
 	}
 
 	// useEffect(() => {
@@ -57,15 +57,25 @@ export default function Conversation({ username }) {
 	return (
 		<>
 			{conversation
-
+			// mb-auto
 				?	(
 					<Container className="border d-flex flex-column p-0">
 						<h5 className="border mb-auto p-2"> {conversation.friend}</h5>
-						<Container className="border ">
+						<Container className="border" style={{ 'overflow-y': 'scroll' }}>
 							{messages.length > 0
 								? messages.map((m) => {
-									console.log(m);
-									return (<p>{m.text}</p>);
+									if (m.sender === username) {
+										return (
+											<div className="d-flex justify-content-end mb-2" key={m.id}>
+												<p className="border text-white rounded bg-primary p-2">{m.text}</p>
+											</div>
+										);
+									}
+									return (
+										<div className="d-flex justify-content-start mb-2" key={m.id}>
+											<p className="border bg-light rounded bg-secondary p-2">{m.text}</p>
+										</div>
+									);
 								})
 								: <p>No messages yet, say something</p>}
 						</Container>

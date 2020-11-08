@@ -31,15 +31,15 @@ export default function Dashboard() {
 	};
 
 	return (
-		<Container fluid className="d-flex flex-column h-100 m-0 p-0 border">
-			<Container fluid className="d-flex justify-content-between m-0 border">
+		<Container fluid className="d-flex flex-column h-100 m-0 p-0">
+			<Container fluid id="header" className="d-flex justify-content-between m-0 pt-2">
 				<h3>Hello {username}</h3>
 				<Form onSubmit={handleLogout}>
 					<Button type="submit">Logout</Button>
 				</Form>
 			</Container>
 
-			<Container fluid className="d-flex justify-content-between h-100 m-0 mt-4 border ">
+			<Container fluid id="main" className="d-flex justify-content-between m-0 pt-4">
 
 				<ConversationProvider>
 					<ConversationsSideBar />

@@ -12,7 +12,15 @@ code {
 
 #root{
     height: 100vh;
+    max-height: 100vh;
+}
 
+#header{
+    height: 8vh;
+}
+
+#main{
+    height: 92vh;
 }
 
 p{
