@@ -5,8 +5,8 @@ import io from 'socket.io-client';
 
 const SocketContext = React.createContext();
 
-// const URL = 'https://send-io.herokuapp.com';
-const URL = 'http://localhost:4000';
+const URL = 'https://send-io.herokuapp.com';
+// const URL = 'http://localhost:4000';
 
 export function useSocket() {
 	return useContext(SocketContext);
