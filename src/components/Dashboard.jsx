@@ -43,8 +43,8 @@ export default function Dashboard() {
 
 				<ConversationProvider>
 					<ConversationsSideBar />
-					<Socketprovider>
-						<Conversation />
+					<Socketprovider username={username}>
+						<Conversation username={username} />
 					</Socketprovider>
 				</ConversationProvider>
 

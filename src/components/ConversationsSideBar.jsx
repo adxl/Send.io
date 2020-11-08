@@ -65,14 +65,20 @@ export default function ConversationsSideBar() {
 				</Container>
 				<div className="border ">
 					{conversations.length > 0
-						? conversations.map((c) => (
-							<Container key={c} className="d-flex align-items-center justify-content-between border">
-								<p className="border w-100">
-									<Button variant="white" className="border w-100 text-left" onClick={() => selectConversation(c)}>{c}</Button>
-								</p>
-								<Button type="button" value={c} variant="danger" onClick={deleteConversation}>X</Button>
-							</Container>
-						))
+						? conversations.map((c) => {
+							const conversationObject = {
+								id: c.id,
+								friend: c.friend,
+							};
+							return (
+								<Container key={c.id} className="d-flex align-items-center justify-content-between border">
+									<p className="border w-100">
+										<Button variant="white" className="border w-100 text-left" onClick={() => selectConversation(conversationObject)}>{c.friend}</Button>
+									</p>
+									<Button type="button" value={c.friend} variant="danger" onClick={deleteConversation}>X</Button>
+								</Container>
+							);
+						})
 						: <p>No conversations</p>}
 				</div>
 

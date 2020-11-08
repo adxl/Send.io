@@ -1,20 +1,32 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import { Container, Form, Button } from 'react-bootstrap';
 import { useSocket } from '../contexts/SocketProvider';
 import { useConversation } from '../contexts/ConversationProvider';
 
-export default function Conversation() {
+export default function Conversation({ username }) {
 	const messageInput = useRef();
 	const socket = useSocket();
 	const { conversation } = useConversation();
 
 	function sendMessage(e) {
 		e.preventDefault();
-		const message = messageInput.current.value;
-		socket.emit('send-message', { sender: 'senderId', message });
-		console.log(message);
+		const message = {
+			conversationId: conversation.id,
+			friend: conversation.friend,
+			sender: username,
+			text: messageInput.current.value,
+		};
+		socket.emit('send-message', message);
 	}
+
+	useEffect(() => {
+		if (socket) {
+			socket.on('receive-message', (m) => {
+				console.log(m);
+			});
+		}
+	}, [socket]);
 
 	return (
 		<>
