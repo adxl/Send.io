@@ -66,6 +66,7 @@ export default function ConversationsSideBar() {
 				<div className="border ">
 					{conversations.length > 0
 						? conversations.map((c) => {
+							console.log(c);
 							const conversationObject = {
 								id: c.id,
 								friend: c.friend,
@@ -73,9 +74,16 @@ export default function ConversationsSideBar() {
 							return (
 								<Container key={c.id} className="d-flex align-items-center justify-content-between border">
 									<p className="border w-100">
-										<Button variant="white" className="border w-100 text-left" onClick={() => selectConversation(conversationObject)}>{c.friend}</Button>
+										<Button variant="white" className="border w-100 text-left" onClick={() => selectConversation(conversationObject)}>
+											<p>{c.friend}</p>
+											<small className="text-muted">{c.lastMessage}</small>
+										</Button>
+
 									</p>
-									<Button type="button" value={c.friend} variant="danger" onClick={deleteConversation}>X</Button>
+									{
+									// eslint-disable-next-line max-len
+									/* <Button type="button" value={c.friend} variant="danger" onClick={deleteConversation}>X</Button> */
+									}
 								</Container>
 							);
 						})
