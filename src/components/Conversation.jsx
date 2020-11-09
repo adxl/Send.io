@@ -10,6 +10,8 @@ export default function Conversation({ username }) {
 	const [messages, setMessages] = useState([]);
 
 	const messageInput = useRef();
+	const conversationEnd = useRef();
+
 	const socket = useSocket();
 	const { conversation } = useConversation();
 
@@ -24,6 +26,9 @@ export default function Conversation({ username }) {
 				.then((response) => response.json())
 				.then((data) => {
 					setMessages(data);
+					if (conversationEnd) {
+						conversationEnd.current.scrollIntoView({ behavior: 'auto' });
+					}
 				})
 				.catch((error) => { throw error; });
 		}
@@ -78,6 +83,7 @@ export default function Conversation({ username }) {
 									);
 								})
 								: <p>No messages yet, say something</p>}
+							<div ref={conversationEnd} />
 						</Container>
 						<Form onSubmit={sendMessage} className="w-100">
 							<Container fluid className="border d-flex align-items-end justify-content-between p-0 ">
