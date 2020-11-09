@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button, Modal } from 'react-bootstrap';
+import { Container, Button, Modal, Image } from 'react-bootstrap';
 import NewConversationModal from './NewConversationModal';
 import { useConversation } from '../contexts/ConversationProvider';
 
 const URL = 'https://send-io.herokuapp.com';
+const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function ConversationsSideBar() {
 	const [conversations, setConversations] = useState([]);
@@ -56,6 +57,15 @@ export default function ConversationsSideBar() {
 		setModalOpen(false);
 	};
 
+	const hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+			hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
+	};
+
 	return (
 		<>
 			<Container className="border p-0">
@@ -66,17 +76,22 @@ export default function ConversationsSideBar() {
 				<div className="border ">
 					{conversations.length > 0
 						? conversations.map((c) => {
-							console.log(c);
 							const conversationObject = {
 								id: c.id,
 								friend: c.friend,
 							};
+							const avatarParams = `background=${hashColor(c.friend)}&name=${c.friend.charAt(0)}`;
 							return (
 								<Container key={c.id} className="d-flex align-items-center justify-content-between border">
 									<p className="border w-100">
 										<Button variant="white" className="border w-100 text-left" onClick={() => selectConversation(conversationObject)}>
-											<p>{c.friend}</p>
-											<small className="text-muted">{c.lastMessage}</small>
+											<div className="d-flex align-items-center ">
+												<Image roundedCircle thumbnail className="w-25 no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+												<div className="pl-2">
+													<p>{c.friend}</p>
+													<small className="text-muted">{c.lastMessage}</small>
+												</div>
+											</div>
 										</Button>
 
 									</p>

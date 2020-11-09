@@ -39,6 +39,8 @@
         "no-console": "off",
         "react/jsx-one-expression-per-line": "off",
         "react/prop-types":"off",
-        "object-curly-newline":"off"
+        "object-curly-newline":"off",
+        "no-plusplus":"off",
+        "no-bitwise":"off"
     }
 }
