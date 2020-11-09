@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { useSocket } from '../contexts/SocketProvider';
 import { useConversation } from '../contexts/ConversationProvider';
 
@@ -76,15 +76,38 @@ export default function Conversation({ username }) {
 									if (m.sender === username) {
 										return (
 											<div className="d-flex align-items-center justify-content-end mb-2" key={m.id}>
-												<p className="border text-white rounded bg-primary p-2">{m.text}</p>
-												<small className="text-muted">{m.createdAt.time}</small>
+
+												{/* <small className="text-muted">{m.createdAt.time}</small> */}
+
+												<OverlayTrigger
+													placement="right"
+													delay={{ show: 50, hide: 0 }}
+													overlay={(
+														<Tooltip id="button-tooltip">
+															{m.createdAt.time}
+														</Tooltip>
+													)}
+												>
+													<p className="border text-white rounded bg-primary p-2">{m.text}</p>
+												</OverlayTrigger>
+
 											</div>
 										);
 									}
 									return (
 										<div className="d-flex align-items-center justify-content-start mb-2" key={m.id}>
-											<small className="text-muted">{m.createdAt.time}</small>
-											<p className="border bg-light rounded bg-secondary p-2">{m.text}</p>
+											{/* <small className="text-muted">{m.createdAt.time}</small> */}
+											<OverlayTrigger
+												placement="left"
+												delay={{ show: 50, hide: 0 }}
+												overlay={(
+													<Tooltip id="button-tooltip">
+														{m.createdAt.time}
+													</Tooltip>
+												)}
+											>
+												<p className="border bg-light rounded bg-secondary p-2">{m.text}</p>
+											</OverlayTrigger>
 										</div>
 									);
 								})

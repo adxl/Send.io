@@ -29,6 +29,10 @@
             "warn",
             "tab"
         ],
+        "react/jsx-indent-props": [
+            "warn",
+            "tab"
+        ],
         "no-mixed-spaces-and-tabs": "warn",
         "no-tabs": "off",
         "no-await-in-loop": "off",
