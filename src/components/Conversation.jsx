@@ -75,14 +75,15 @@ export default function Conversation({ username }) {
 								? messages.map((m) => {
 									if (m.sender === username) {
 										return (
-											<div className="d-flex justify-content-end mb-2" key={m.id}>
+											<div className="d-flex align-items-center justify-content-end mb-2" key={m.id}>
 												<p className="border text-white rounded bg-primary p-2">{m.text}</p>
-												<span>{m.createdAt.time}</span>
+												<small className="text-muted">{m.createdAt.time}</small>
 											</div>
 										);
 									}
 									return (
-										<div className="d-flex justify-content-start mb-2" key={m.id}>
+										<div className="d-flex align-items-center justify-content-start mb-2" key={m.id}>
+											<small className="text-muted">{m.createdAt.time}</small>
 											<p className="border bg-light rounded bg-secondary p-2">{m.text}</p>
 										</div>
 									);
