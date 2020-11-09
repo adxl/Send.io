@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 
 import io from 'socket.io-client';
+import { useConversation } from './ConversationProvider';
 
 const SocketContext = React.createContext();
 
@@ -15,24 +16,28 @@ export function useSocket() {
 export function Socketprovider({ username, children }) {
 	const [socket, setSocket] = useState();
 
+	const { conversation } = useConversation();
+
 	// useEffect(() => {
 	// 	setId(localStorage.getItem('send-io-usertoken'));
 	// }, []);
 
 	useEffect(() => {
-		if (username) {
-			console.log(`Socket?${username}`);
+		if (conversation) {
+			// console.log(`Socket?${conversation.id}`);
 			const newSocket = io(
 				URL,
 				{
-					query: { username },
-					reconnection: false,
+					query: {
+						id: conversation.id,
+						username },
+					// reconnection: false,
 				},
 			);
 			setSocket(newSocket);
 			return () => newSocket.close();
 		} return 0;
-	}, [username]);
+	}, [conversation]);
 
 	return (
 		<SocketContext.Provider value={socket}>

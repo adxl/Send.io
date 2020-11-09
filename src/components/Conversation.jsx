@@ -16,6 +16,7 @@ export default function Conversation({ username }) {
 	const { conversation } = useConversation();
 
 	const fetchMessages = () => {
+		// console.log('will fetch');
 		if (conversation) {
 			const { friend } = conversation;
 			fetch(`${URL}/conversations/${friend}/messages`, {
@@ -26,6 +27,7 @@ export default function Conversation({ username }) {
 				.then((response) => response.json())
 				.then((data) => {
 					setMessages(data);
+					// console.log(data);
 					if (conversationEnd) {
 						conversationEnd.current.scrollIntoView({ behavior: 'auto' });
 					}
@@ -52,8 +54,10 @@ export default function Conversation({ username }) {
 	}
 
 	useEffect(() => {
+		// console.log(socket);
 		if (socket) {
 			socket.on('receive-message', () => {
+				// console.log('emit');
 				fetchMessages();
 			});
 		}
@@ -73,6 +77,7 @@ export default function Conversation({ username }) {
 										return (
 											<div className="d-flex justify-content-end mb-2" key={m.id}>
 												<p className="border text-white rounded bg-primary p-2">{m.text}</p>
+												<span>{m.createdAt.time}</span>
 											</div>
 										);
 									}
