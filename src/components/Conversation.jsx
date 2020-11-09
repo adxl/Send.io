@@ -46,13 +46,13 @@ export default function Conversation({ username }) {
 		fetchMessages();
 	}
 
-	// useEffect(() => {
-	// 	if (socket) {
-	// 		socket.on('receive-message', (m) => {
-	// 			console.log(m);
-	// 		});
-	// 	}
-	// }, [socket]);
+	useEffect(() => {
+		if (socket) {
+			socket.on('receive-message', () => {
+				fetchMessages();
+			});
+		}
+	}, [socket]);
 
 	return (
 		<>
