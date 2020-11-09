@@ -1,10 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
-import { Container, Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Container, Form, Button, OverlayTrigger, Tooltip, Image } from 'react-bootstrap';
 import { useSocket } from '../contexts/SocketProvider';
 import { useConversation } from '../contexts/ConversationProvider';
 
 const URL = 'https://send-io.herokuapp.com';
+const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Conversation({ username }) {
 	const [messages, setMessages] = useState([]);
@@ -63,13 +64,26 @@ export default function Conversation({ username }) {
 		}
 	}, [socket]);
 
+	const hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+			hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
+	};
+
 	return (
 		<>
 			{conversation
-			// mb-auto
 				?	(
 					<Container className="border d-flex flex-column p-0 h-100">
-						<h5 className="border mb-auto p-2"> {conversation.friend}</h5>
+						<div className="d-flex align-items-center p-2">
+							<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(conversation.friend)}&name=${conversation.friend.charAt(0)}`} alt="profile-pic" />
+							<div className="pl-2">
+								<p>{conversation.friend}</p>
+							</div>
+						</div>
 						<Container id="chat-container" className="border">
 							{messages.length > 0
 								? messages.map((m) => {

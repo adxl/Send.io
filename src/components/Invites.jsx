@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Image } from 'react-bootstrap';
 import { useFriendship } from '../contexts/FriendshipsProvider';
 
 const URL = 'https://send-io.herokuapp.com';
+const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Invites() {
 	const { invites, fetchInvites, fetchFriends } = useFriendship();
@@ -91,6 +92,15 @@ export default function Invites() {
 			.catch((error) => { throw error; });
 	};
 
+	const hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+			hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
+	};
+
 	return (
 		<>
 			<Container className="border">
@@ -108,11 +118,21 @@ export default function Invites() {
 						<h3>Invites</h3>
 						{invites.map((i) => {
 							const { user } = i;
+							const avatarParams = `background=${hashColor(user)}&name=${user.charAt(0)}`;
 							return (
 								<Container key={user} className="d-flex align-items-center justify-content-center">
-									<p>{user}</p>
-									<Button variant="success" type="button" value={user} onClick={handleAcceptRequest}>Accept</Button>
-									<Button variant="danger" type="button" value={user} onClick={handleDenyRequest}>Deny</Button>
+
+									<div className="d-flex align-items-center justify-content-between w-100">
+										<div className="d-flex align-items-center">
+											<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+											<p className="pl-2">{user}</p>
+										</div>
+										<div className="d-flex align-items-center">
+											<Button variant="success" type="button" value={user} onClick={handleAcceptRequest}>Accept</Button>
+											<Button variant="danger" type="button" value={user} onClick={handleDenyRequest}>Deny</Button>
+										</div>
+									</div>
+
 								</Container>
 							);
 						})}

@@ -86,7 +86,7 @@ export default function ConversationsSideBar() {
 									<p className="border w-100">
 										<Button variant="white" className="border w-100 text-left" onClick={() => selectConversation(conversationObject)}>
 											<div className="d-flex align-items-center ">
-												<Image roundedCircle thumbnail className="w-25 no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+												<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
 												<div className="pl-2">
 													<p>{c.friend}</p>
 													<small className="text-muted">{c.lastMessage}</small>

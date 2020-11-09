@@ -43,5 +43,6 @@ p{
 }
 
 .no-tiny {
-	min-width: 50px;
+	width: 1vw;
+	min-width: 55px;
 }
