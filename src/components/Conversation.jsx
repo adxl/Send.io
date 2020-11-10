@@ -16,6 +16,8 @@ export default function Conversation({ username }) {
 	const socket = useSocket();
 	const { conversation } = useConversation();
 
+	// console.log('in conv ', conversation);
+
 	const fetchMessages = () => {
 		// console.log('will fetch');
 		if (conversation) {

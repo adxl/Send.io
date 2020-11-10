@@ -28,6 +28,7 @@ export default function Dashboard() {
 
 	const handleLogout = () => {
 		localStorage.removeItem('send-io-usertoken');
+		localStorage.removeItem('send-io-current-conversation');
 	};
 
 	return (
