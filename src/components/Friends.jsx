@@ -46,20 +46,20 @@ export default function Friends() {
 
 	return (
 		<>
-			<Container className="border">
+			<Container className="">
 				<h1>Friends</h1>
-				<Container className="border ">
+				<Container className=" ">
 					{friends.length > 0
 						? friends.map((f) => {
 							const avatarParams = `background=${hashColor(f)}&name=${f.charAt(0)}`;
 							return (
-								<Container key={f} className="d-flex align-items-center justify-content-between border pb-2">
+								<Container key={f} className="d-flex align-items-center justify-content-between  pb-2">
 									<div className="d-flex align-items-center justify-content-between w-100">
 										<div className="d-flex align-items-center">
 											<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
 											<p className="pl-2">{f}</p>
 										</div>
-										<Button className="border" variant="danger" type="button" value={f} onClick={handleUnfriend}>Unfriend</Button>
+										<Button className="" variant="danger" type="button" value={f} onClick={handleUnfriend}>Unfriend</Button>
 									</div>
 								</Container>
 							);

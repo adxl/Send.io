@@ -68,12 +68,12 @@ export default function ConversationsSideBar() {
 
 	return (
 		<>
-			<Container className="border p-0">
-				<Container className="d-flex align-items-center justify-content-between border">
+			<Container className=" p-0">
+				<Container className="d-flex align-items-center justify-content-between ">
 					<h1>Conversations</h1>
 					<Button type="button" onClick={openModal}>+</Button>
 				</Container>
-				<div className="border ">
+				<div>
 					{conversations.length > 0
 						? conversations.map((c) => {
 							const conversationObject = {
@@ -82,9 +82,9 @@ export default function ConversationsSideBar() {
 							};
 							const avatarParams = `background=${hashColor(c.friend)}&name=${c.friend.charAt(0)}`;
 							return (
-								<Container key={c.id} className="d-flex align-items-center justify-content-between border">
-									<p className="border w-100">
-										<Button variant="white" className="border w-100 text-left" onClick={() => selectConversation(conversationObject)}>
+								<Container key={c.id} className="d-flex align-items-center justify-content-between ">
+									<p className=" w-100">
+										<Button variant="white" className=" w-100 text-left" onClick={() => selectConversation(conversationObject)}>
 											<div className="d-flex align-items-center ">
 												<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
 												<div className="pl-2">

@@ -53,6 +53,7 @@ export default function Dashboard() {
 									{username && <Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />}
 									<p className="pl-2">{username}</p>
 								</div>
+								<br />
 								<ConversationsSideBar />
 							</Col>
 							<Col xs={8} className="p-0 h-100">

@@ -103,7 +103,7 @@ export default function Invites() {
 
 	return (
 		<>
-			<Container className="border">
+			<Container className="">
 				<Form onSubmit={handleAddFriend}>
 					<h1>Add friend</h1>
 					<Form.Group className="d-flex justify-content-center">
@@ -114,7 +114,7 @@ export default function Invites() {
 				</Form>
 				<br />
 				{invites.length > 0 && (
-					<Container className="border py-2 px-0">
+					<Container className=" py-2 px-0">
 						<h1>Invites</h1>
 						{invites.map((i) => {
 							const { user } = i;

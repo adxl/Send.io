@@ -80,13 +80,13 @@ export default function Conversation({ username }) {
 			{conversation
 				?	(
 					<Container className="border d-flex flex-column p-0 h-100">
-						<div className="d-flex align-items-center p-2 border">
+						<div className="border-bottom d-flex align-items-center p-2 ">
 							<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(conversation.friend)}&name=${conversation.friend.charAt(0)}`} alt="profile-pic" />
 							<div className="pl-2">
 								<p>{conversation.friend}</p>
 							</div>
 						</div>
-						<Container id="chat-container" className="border pb-4  mt-auto">
+						<Container id="chat-container" className=" pb-4  mt-auto">
 							{messages.length > 0
 								? messages.map((m) => {
 									if (m.sender === username) {
@@ -104,7 +104,7 @@ export default function Conversation({ username }) {
 														</Tooltip>
 													)}
 												>
-													<p className="border text-white bubble bg-primary py-1 px-2 no-stretch">{m.text}</p>
+													<p className=" text-white bubble bg-primary py-1 px-2 no-stretch">{m.text}</p>
 												</OverlayTrigger>
 
 											</div>
@@ -122,7 +122,7 @@ export default function Conversation({ username }) {
 													</Tooltip>
 												)}
 											>
-												<p className="border bg-light bubble bg-secondary py-1 px-2 no-stretch">{m.text}</p>
+												<p className=" bg-light bubble bg-secondary py-1 px-2 no-stretch">{m.text}</p>
 											</OverlayTrigger>
 										</div>
 									);
@@ -131,7 +131,7 @@ export default function Conversation({ username }) {
 							<div ref={conversationEnd} />
 						</Container>
 						<Form onSubmit={sendMessage} className="w-100">
-							<Container fluid className="border d-flex align-items-end justify-content-between p-0 ">
+							<Container fluid className=" d-flex align-items-end justify-content-between p-0 ">
 								<Form.Group className="m-0 w-100">
 									<Form.Control className="w-100" required placeholder="Type a message.." ref={messageInput} type="text" />
 								</Form.Group>
@@ -141,7 +141,7 @@ export default function Conversation({ username }) {
 					</Container>
 				)
 				:	(
-					<Container className="border d-flex align-items-center justify-content-center p-0 h-100">
+					<Container className=" d-flex align-items-center justify-content-center p-0 h-100">
 						<p className="w-100 p-4 text-center">
 							Select a conversation to start chatting
 						</p>
