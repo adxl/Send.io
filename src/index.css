@@ -15,12 +15,8 @@ code {
 	max-height: 100vh;
 }
 
-#header{
-	height: 5vh;
-}
-
 #main{
-	height: 95vh;
+	height: 100vh;
 }
 
 p{

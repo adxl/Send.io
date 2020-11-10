@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Col, Row, Form, Button } from 'react-bootstrap';
+import { Container, Col, Row, Form, Button, Image } from 'react-bootstrap';
 import { Socketprovider } from '../contexts/SocketProvider';
 import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
@@ -9,6 +9,7 @@ import Friends from './Friends';
 import Invites from './Invites';
 
 const URL = 'https://send-io.herokuapp.com';
+const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Dashboard() {
 	const [username, setUsername] = useState();
@@ -31,19 +32,27 @@ export default function Dashboard() {
 		localStorage.removeItem('send-io-current-conversation');
 	};
 
+	const hashColor = (str) => {
+		let hash = 0;
+		for (let i = 0; i < str.length; i++) {
+			hash = str.charCodeAt(i) + ((hash << 5) - hash);
+		}
+		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+		return '00000'.substring(0, 6 - c.length) + c;
+	};
+
 	return (
 		<Container fluid className="d-flex flex-column h-100 m-0 p-0">
 
-			<Container fluid id="header" className="d-flex justify-content-between m-0 pt-2">
-				<h3>Hello {username}</h3>
-				<Form onSubmit={handleLogout}>
-					<Button type="submit">Logout</Button>
-				</Form>
-			</Container>
-
-			<Row id="main" className="d-flex justify-content-between m-0 pt-4">
+			<Row id="main" className="d-flex justify-content-between m-0 p-0">
 				<Col xs={9} className="p-0 h-100">
-					<Row className="m-0 h-100">
+					<Row className="m-0 h-100 d-flex flex-column ">
+						<div className="d-flex align-items-center p-2">
+							{username && <Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />}
+							<div className="pl-2">
+								<p>{username}</p>
+							</div>
+						</div>
 						<ConversationProvider>
 							<Col xs={4} className="p-0">
 								<ConversationsSideBar />
