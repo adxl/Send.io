@@ -48,7 +48,6 @@ export default function Friends() {
 		<>
 			<Container className="border">
 				<h1>Friends</h1>
-				<br />
 				<Container className="border ">
 					{friends.length > 0
 						? friends.map((f) => {

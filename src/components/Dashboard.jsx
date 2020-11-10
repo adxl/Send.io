@@ -48,14 +48,14 @@ export default function Dashboard() {
 				<Col xs={9} className="p-0  h-100">
 					<Row className="m-0 h-100 d-flex ">
 						<ConversationProvider>
-							<Col xs={4} className="p-0 dborder h-100">
+							<Col xs={4} className="p-0 h-100">
 								<div className="d-flex align-items-center p-2">
 									{username && <Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />}
 									<p className="pl-2">{username}</p>
 								</div>
 								<ConversationsSideBar />
 							</Col>
-							<Col xs={8} className="p-0 dborder h-100">
+							<Col xs={8} className="p-0 h-100">
 								<Socketprovider username={username}>
 									<Conversation username={username} />
 								</Socketprovider>
@@ -63,10 +63,11 @@ export default function Dashboard() {
 						</ConversationProvider>
 					</Row>
 				</Col>
-				<Col xs={3} className="p-0">
+				<Col xs={3} className="p-0 pt-5">
 					<FriendshipsProvider>
 						<Container className="d-flex flex-column p-0">
 							<Invites />
+							<hr />
 							<Friends />
 						</Container>
 					</FriendshipsProvider>
