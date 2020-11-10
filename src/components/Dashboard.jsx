@@ -63,7 +63,7 @@ export default function Dashboard() {
 										<p className="pl-2">{username}</p>
 									</div>
 									<Form onSubmit={handleLogout}>
-										<Button type="submit">
+										<Button type="submit" className="bg-3 border-0">
 											<FontAwesomeIcon icon={faSignOutAlt} />
 										</Button>
 									</Form>

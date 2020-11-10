@@ -106,15 +106,17 @@ export default function Invites() {
 	return (
 		<>
 			<Container className="">
-				<Form onSubmit={handleAddFriend}>
-					<h1>Add friend</h1>
-					<Form.Group className="d-flex justify-content-center">
-						<Form.Control className="bg-3 border-0" ref={searchUsernameRef} type="text" placeholder="Username" required />
-					</Form.Group>
-					<p>{inviteAlert}</p>
-					<Button type="submit" className="w-100 align-items-center justify-content-center">
-						<FontAwesomeIcon icon={faUserPlus} />
-					</Button>
+				<h1>Add friend</h1>
+				<Form onSubmit={handleAddFriend} className="w-100">
+					<Container className="d-flex justify-content-between pl-2">
+						<Form.Group className="m-0 w-100">
+							<Form.Control className="bg-3 border-0" ref={searchUsernameRef} type="text" placeholder="Username" required />
+						</Form.Group>
+						<Button type="submit" className="align-items-center justify-content-center">
+							<FontAwesomeIcon icon={faUserPlus} />
+						</Button>
+					</Container>
+					<p className="mt-2 pl-2">{inviteAlert}</p>
 				</Form>
 				<br />
 				{invites.length > 0 && (

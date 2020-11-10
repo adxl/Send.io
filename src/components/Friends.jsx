@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Button, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserSlash } from '@fortawesome/free-solid-svg-icons';
+import { faUserSlash, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { useFriendship } from '../contexts/FriendshipsProvider';
 
 const URL = 'https://send-io.herokuapp.com';
 const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Friends() {
+	const [unfriend, setUnfriend] = useState();
 	const { friends, fetchFriends } = useFriendship();
 
 	const handleUnfriend = (e) => {
@@ -37,6 +38,10 @@ export default function Friends() {
 			.catch((error) => { throw error; });
 	};
 
+	const toggleAllowUnfriend = (f) => {
+		setUnfriend(f);
+	};
+
 	const hashColor = (str) => {
 		let hash = 0;
 		for (let i = 0; i < str.length; i++) {
@@ -63,9 +68,24 @@ export default function Friends() {
 											</div>
 											<p className="pl-2">{f}</p>
 										</div>
-										<Button className="rounded-circle circle" variant="danger" type="button" value={f} onClick={handleUnfriend}>
-											<FontAwesomeIcon icon={faUserSlash} />
-										</Button>
+
+										<div
+											onMouseEnter={() => toggleAllowUnfriend(f)}
+											onMouseLeave={() => toggleAllowUnfriend(false)}
+										>
+											{ unfriend === f
+												? (
+													<Button className="rounded-circle circle" variant="danger" type="button" value={f} onClick={handleUnfriend}>
+														<FontAwesomeIcon icon={faUserSlash} />
+													</Button>
+												)
+												: (
+													<Button className="wt" variant="transparent" type="button" value={f} onClick={handleUnfriend}>
+														<FontAwesomeIcon icon={faEllipsisV} />
+													</Button>
+												)											}
+										</div>
+
 									</div>
 								</Container>
 							);

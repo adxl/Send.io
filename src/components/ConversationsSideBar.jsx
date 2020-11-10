@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Modal, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-regular-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import NewConversationModal from './NewConversationModal';
 import { useConversation } from '../contexts/ConversationProvider';
 
