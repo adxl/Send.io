@@ -16,11 +16,11 @@ code {
 }
 
 #header{
-	height: 8vh;
+	height: 5vh;
 }
 
 #main{
-	height: 92vh;
+	height: 95vh;
 }
 
 p{
@@ -45,4 +45,13 @@ p{
 .no-tiny {
 	width: 1vw;
 	min-width: 55px;
+}
+
+.no-stretch{
+	max-width: 70%;
+}
+
+.bubble{
+	border-radius: 15px;
+	display: inline-block;
 }

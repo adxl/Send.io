@@ -80,18 +80,18 @@ export default function Conversation({ username }) {
 			{conversation
 				?	(
 					<Container className="border d-flex flex-column p-0 h-100">
-						<div className="d-flex align-items-center p-2">
+						<div className="d-flex align-items-center p-2 border">
 							<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(conversation.friend)}&name=${conversation.friend.charAt(0)}`} alt="profile-pic" />
 							<div className="pl-2">
 								<p>{conversation.friend}</p>
 							</div>
 						</div>
-						<Container id="chat-container" className="border">
+						<Container id="chat-container" className="border mt-auto pb-4">
 							{messages.length > 0
 								? messages.map((m) => {
 									if (m.sender === username) {
 										return (
-											<div className="d-flex align-items-center justify-content-end mb-2" key={m.id}>
+											<div className="d-flex align-items-center justify-content-end mb-1 " key={m.id}>
 
 												{/* <small className="text-muted">{m.createdAt.time}</small> */}
 
@@ -104,14 +104,14 @@ export default function Conversation({ username }) {
 														</Tooltip>
 													)}
 												>
-													<p className="border text-white rounded bg-primary p-2">{m.text}</p>
+													<p className="border text-white bubble bg-primary py-1 px-2 no-stretch">{m.text}</p>
 												</OverlayTrigger>
 
 											</div>
 										);
 									}
 									return (
-										<div className="d-flex align-items-center justify-content-start mb-2" key={m.id}>
+										<div className="d-flex align-items-center justify-content-start mb-1" key={m.id}>
 											{/* <small className="text-muted">{m.createdAt.time}</small> */}
 											<OverlayTrigger
 												placement="left"
@@ -122,18 +122,18 @@ export default function Conversation({ username }) {
 													</Tooltip>
 												)}
 											>
-												<p className="border bg-light rounded bg-secondary p-2">{m.text}</p>
+												<p className="border bg-light bubble bg-secondary py-1 px-2 no-stretch">{m.text}</p>
 											</OverlayTrigger>
 										</div>
 									);
 								})
-								: <p>No messages yet, say something</p>}
+								: <p className="pb-5 text-center text-muted">No messages yet, say something</p>}
 							<div ref={conversationEnd} />
 						</Container>
 						<Form onSubmit={sendMessage} className="w-100">
 							<Container fluid className="border d-flex align-items-end justify-content-between p-0 ">
 								<Form.Group className="m-0 w-100">
-									<Form.Control className="w-100" required placeholder="Type a message" ref={messageInput} type="text" />
+									<Form.Control className="w-100" required placeholder="Type a message.." ref={messageInput} type="text" />
 								</Form.Group>
 								<Button type="submit">Send</Button>
 							</Container>
@@ -141,7 +141,7 @@ export default function Conversation({ username }) {
 					</Container>
 				)
 				:	(
-					<Container className="border d-flex align-items-center justify-content-center p-0">
+					<Container className="border d-flex align-items-center justify-content-center p-0 h-100">
 						<p className="w-100 p-4 text-center">
 							Select a conversation to start chatting
 						</p>

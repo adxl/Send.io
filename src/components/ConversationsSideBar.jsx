@@ -89,7 +89,7 @@ export default function ConversationsSideBar() {
 												<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
 												<div className="pl-2">
 													<p>{c.friend}</p>
-													<small className="text-muted">{c.lastMessage}</small>
+													<small className="text-muted">{c.lastMessage.substring(0, 30)}</small>
 												</div>
 											</div>
 										</Button>
