@@ -53,11 +53,12 @@ export default function Friends() {
 
 	return (
 		<>
-			<Container className="">
-				<h1>Friends</h1>
-				<Container className=" ">
-					{friends.length > 0
-						? friends.map((f) => {
+			{friends.length > 0
+				&& (
+					<Container className=" ">
+						<h1>Friends</h1>
+
+						{friends.map((f) => {
 							const avatarParams = `background=${hashColor(f)}&name=${f.charAt(0)}`;
 							return (
 								<Container key={f} className="d-flex align-items-center justify-content-between  pb-2">
@@ -89,10 +90,9 @@ export default function Friends() {
 									</div>
 								</Container>
 							);
-						})
-						: <p>No friends</p>}
-				</Container>
-			</Container>
+						})}
+					</Container>
+				)}
 		</>
 	);
 }

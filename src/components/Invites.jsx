@@ -116,7 +116,7 @@ export default function Invites() {
 							<FontAwesomeIcon icon={faUserPlus} />
 						</Button>
 					</Container>
-					<p className="mt-2 pl-2">{inviteAlert}</p>
+					<p className="mt-2 pl-4">{inviteAlert}</p>
 				</Form>
 				<br />
 				{invites.length > 0 && (

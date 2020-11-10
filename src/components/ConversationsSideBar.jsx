@@ -71,8 +71,8 @@ export default function ConversationsSideBar() {
 	return (
 		<>
 			<Container className="p-0">
-				<Container className="d-flex align-items-center justify-content-between ">
-					<h1>Conversations</h1>
+				<Container className="d-flex align-items-center justify-content-between pl-3">
+					<h1 className="m-0">Conversations</h1>
 					<Button type="button" onClick={openModal} className="rounded-circle circle">
 						<FontAwesomeIcon icon={faEdit} />
 					</Button>
@@ -112,7 +112,7 @@ export default function ConversationsSideBar() {
 								</Container>
 							);
 						})
-						: <p>No conversations</p>}
+						: <p className="pl-5 mt-3">No conversations</p>}
 				</div>
 
 				<Modal show={modalOpen} onHide={hideModal}>
