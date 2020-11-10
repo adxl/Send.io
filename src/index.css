@@ -56,6 +56,19 @@ p{
 	display: inline-block;
 }
 
+.square{
+	border-radius: 0;
+}
+
 .dborder{
 	border: solid 3px red;
 }
+
+.circle{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+}
+

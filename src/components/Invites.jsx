@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Container, Form, Button, Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserPlus, faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useFriendship } from '../contexts/FriendshipsProvider';
 
 const URL = 'https://send-io.herokuapp.com';
@@ -110,7 +112,9 @@ export default function Invites() {
 						<Form.Control ref={searchUsernameRef} type="text" placeholder="Username" required />
 					</Form.Group>
 					<p>{inviteAlert}</p>
-					<Button type="submit" className="w-100">Add</Button>
+					<Button type="submit" className="w-100 align-items-center justify-content-center">
+						<FontAwesomeIcon icon={faUserPlus} />
+					</Button>
 				</Form>
 				<br />
 				{invites.length > 0 && (
@@ -128,8 +132,12 @@ export default function Invites() {
 											<p className="pl-2">{user}</p>
 										</div>
 										<div className="d-flex align-items-center">
-											<Button variant="success" type="button" value={user} onClick={handleAcceptRequest}>Accept</Button>
-											<Button variant="danger" type="button" value={user} onClick={handleDenyRequest}>Deny</Button>
+											<Button className="rounded-circle circle mr-2" variant="success" type="button" value={user} onClick={handleAcceptRequest}>
+												<FontAwesomeIcon icon={faCheck} />
+											</Button>
+											<Button className="rounded-circle circle" variant="danger" type="button" value={user} onClick={handleDenyRequest}>
+												<FontAwesomeIcon icon={faTrashAlt} />
+											</Button>
 										</div>
 									</div>
 

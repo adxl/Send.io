@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container, Button, Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUserSlash } from '@fortawesome/free-solid-svg-icons';
 import { useFriendship } from '../contexts/FriendshipsProvider';
 
 const URL = 'https://send-io.herokuapp.com';
@@ -59,7 +61,9 @@ export default function Friends() {
 											<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
 											<p className="pl-2">{f}</p>
 										</div>
-										<Button className="" variant="danger" type="button" value={f} onClick={handleUnfriend}>Unfriend</Button>
+										<Button className="rounded-circle circle" variant="danger" type="button" value={f} onClick={handleUnfriend}>
+											<FontAwesomeIcon icon={faUserSlash} />
+										</Button>
 									</div>
 								</Container>
 							);

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Button, Modal, Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit } from '@fortawesome/free-regular-svg-icons';
 import NewConversationModal from './NewConversationModal';
 import { useConversation } from '../contexts/ConversationProvider';
 
@@ -71,7 +73,9 @@ export default function ConversationsSideBar() {
 			<Container className=" p-0">
 				<Container className="d-flex align-items-center justify-content-between ">
 					<h1>Conversations</h1>
-					<Button type="button" onClick={openModal}>+</Button>
+					<Button type="button" onClick={openModal} className="rounded-circle circle">
+						<FontAwesomeIcon icon={faEdit} />
+					</Button>
 				</Container>
 				<div>
 					{conversations.length > 0

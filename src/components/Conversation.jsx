@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 // import PropTypes from 'prop-types';
 import { Container, Form, Button, OverlayTrigger, Tooltip, Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { useSocket } from '../contexts/SocketProvider';
 import { useConversation } from '../contexts/ConversationProvider';
 
@@ -130,12 +132,14 @@ export default function Conversation({ username }) {
 								: <p className="pb-5 text-center text-muted">No messages yet, say something</p>}
 							<div ref={conversationEnd} />
 						</Container>
-						<Form onSubmit={sendMessage} className="w-100">
+						<Form onSubmit={sendMessage} className="w-100 border-top">
 							<Container fluid className=" d-flex align-items-end justify-content-between p-0 ">
 								<Form.Group className="m-0 w-100">
-									<Form.Control className="w-100" required placeholder="Type a message.." ref={messageInput} type="text" />
+									<Form.Control className="w-100 square border-0" required placeholder="Type a message.." ref={messageInput} type="text" />
 								</Form.Group>
-								<Button type="submit">Send</Button>
+								<Button type="submit" className="square">
+									<FontAwesomeIcon icon={faPaperPlane} />
+								</Button>
 							</Container>
 						</Form>
 					</Container>
