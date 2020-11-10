@@ -44,7 +44,7 @@ export default function Login({ URL }) {
 					<p className="mb-2 mt-2 text-center text-danger">{alert}</p>
 
 					<Form.Group controlId="formBasicEmail" className="d-flex justify-content-center">
-						<Form.Control className="bg-3 border-0" ref={usernameRef} type="text" placeholder="Username" required />
+						<Form.Control autoComplete="off" className="bg-3 border-0" ref={usernameRef} type="text" placeholder="Username" required />
 					</Form.Group>
 
 					<Form.Group controlId="formBasicPassword">

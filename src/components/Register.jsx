@@ -1,9 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 
 export default function Login({ URL }) {
+	const [passwordsMatch, setPasswordsMatch] = useState(true);
+	const [alert, setAlert] = useState();
+
 	const usernameRef = useRef();
 	const passwordRef = useRef();
+	const passwordConfirmationRef = useRef();
 
 	const handleRegister = (e) => {
 		e.preventDefault();
@@ -31,24 +35,40 @@ export default function Login({ URL }) {
 		}).catch((error) => { throw error; });
 	};
 
+	const checkPasswords = (e) => {
+		const password = passwordRef.current.value;
+		const passwordConfirmation = passwordConfirmationRef.current.value;
+		if (password !== passwordConfirmation) {
+			setAlert("Passwords don't match");
+			setPasswordsMatch(false);
+		} else {
+			setAlert('');
+			setPasswordsMatch(true);
+		}
+	};
+
 	return (
 		<>
 			<Container className="d-flex align-items-center justify-content-center ">
 				<Form onSubmit={handleRegister}>
 
 					<h1 className="mb-3 text-center">Register</h1>
+					<p className="mb-2 mt-2 text-center text-danger">{alert}</p>
 
 					<Form.Group controlId="formBasicEmail" className="d-flex  justify-content-center">
-						<Form.Control className="bg-3 border-0" ref={usernameRef} type="text" placeholder="Username" required />
+						<Form.Control autoComplete="off" className="bg-3 border-0 mb-3" ref={usernameRef} type="text" placeholder="Username" required />
 					</Form.Group>
 
 					<Form.Group controlId="formBasicPassword">
 						<Form.Control className="bg-3 border-0" ref={passwordRef} type="password" placeholder="Password" required />
 					</Form.Group>
 
-					<hr />
+					<Form.Group controlId="formBasicPassword">
+						<Form.Control className="bg-3 border-0" onChange={checkPasswords} ref={passwordConfirmationRef} type="password" placeholder="Password confirmation" required />
+					</Form.Group>
 
-					<Button type="submit" variant="success" className="w-100">Register</Button>
+					<hr />
+					{ passwordsMatch && <Button type="submit" variant="success" className="w-100">Register</Button>}
 				</Form>
 			</Container>
 		</>
