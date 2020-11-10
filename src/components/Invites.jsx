@@ -109,7 +109,7 @@ export default function Invites() {
 				<Form onSubmit={handleAddFriend}>
 					<h1>Add friend</h1>
 					<Form.Group className="d-flex justify-content-center">
-						<Form.Control ref={searchUsernameRef} type="text" placeholder="Username" required />
+						<Form.Control className="bg-3 border-0" ref={searchUsernameRef} type="text" placeholder="Username" required />
 					</Form.Group>
 					<p>{inviteAlert}</p>
 					<Button type="submit" className="w-100 align-items-center justify-content-center">
@@ -128,7 +128,9 @@ export default function Invites() {
 
 									<div className="d-flex align-items-center justify-content-between w-100">
 										<div className="d-flex justify-content-between align-items-center">
-											<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+											<div className="ring">
+												<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+											</div>
 											<p className="pl-2">{user}</p>
 										</div>
 										<div className="d-flex align-items-center">

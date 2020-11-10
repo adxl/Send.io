@@ -45,16 +45,21 @@ export default function Dashboard() {
 	};
 
 	return (
-		<Container fluid className="d-flex  flex-column m-0 p-0 h-100">
+		<Container fluid className="d-flex  flex-column m-0 p-0 h-100 bg-3">
 
 			<Row className="d-flex justify-content-between m-0 p-0 h-100">
 				<Col xs={9} className="p-0  h-100">
 					<Row className="m-0 h-100 d-flex ">
 						<ConversationProvider>
-							<Col xs={4} className="p-0 h-100">
+							<Col xs={4} className="p-0 h-100 bg-1">
 								<div className="d-flex justify-content-between align-items-center p-2">
 									<div className="d-flex align-items-center">
-										{username && <Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />}
+										{username
+										&& (
+											<div className="ring">
+												<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />
+											</div>
+										)}
 										<p className="pl-2">{username}</p>
 									</div>
 									<Form onSubmit={handleLogout}>
@@ -66,7 +71,7 @@ export default function Dashboard() {
 								<br />
 								<ConversationsSideBar />
 							</Col>
-							<Col xs={8} className="p-0 h-100">
+							<Col xs={8} className="p-0 h-100 bg-2">
 								<Socketprovider username={username}>
 									<Conversation username={username} />
 								</Socketprovider>
@@ -74,7 +79,7 @@ export default function Dashboard() {
 						</ConversationProvider>
 					</Row>
 				</Col>
-				<Col xs={3} className="p-0 pt-5">
+				<Col xs={3} className="p-0 pt-5 bg-1">
 					<FriendshipsProvider>
 						<Container className="d-flex flex-column p-0">
 							<Invites />

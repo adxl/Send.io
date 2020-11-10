@@ -10,6 +10,47 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+.bg-1{
+	background-color: #2D3035;
+	color: white;
+}
+
+.bg-2{
+background-color: #3B3C41;
+	color: white;
+
+}
+
+.bg-3{
+	background-color: #1F2229;
+	color: white;
+
+}
+
+.wt{
+	color: white;
+}
+
+.framed {
+	border: solid 1px #1F2229;
+}
+
+.framed-top {
+	border-top: solid 1px #1F2229;
+}
+
+.framed-bottom {
+	border-bottom: solid 1px #1F2229;
+}
+
+.ring{
+	border-radius: 50%;
+	background-color: #3B3C41;
+}
+.ring > img {
+	padding: 2px;
+}
+
 #root{
 	height: 100vh;
 	max-height: 100vh;

@@ -70,7 +70,7 @@ export default function ConversationsSideBar() {
 
 	return (
 		<>
-			<Container className=" p-0">
+			<Container className="p-0">
 				<Container className="d-flex align-items-center justify-content-between ">
 					<h1>Conversations</h1>
 					<Button type="button" onClick={openModal} className="rounded-circle circle">
@@ -86,14 +86,20 @@ export default function ConversationsSideBar() {
 							};
 							const avatarParams = `background=${hashColor(c.friend)}&name=${c.friend.charAt(0)}`;
 							return (
-								<Container key={c.id} className="d-flex align-items-center justify-content-between ">
+								<Container key={c.id} className="d-flex align-items-center justify-content-between">
 									<p className=" w-100">
 										<Button variant="white" className=" w-100 text-left" onClick={() => selectConversation(conversationObject)}>
 											<div className="d-flex align-items-center ">
-												<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+												<div className="ring">
+													<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+												</div>
 												<div className="pl-2">
-													<p>{c.friend}</p>
-													<small className="text-muted">{c.lastMessage.substring(0, 30)}</small>
+													<p className="wt">{c.friend}</p>
+													<small className="text-muted">
+														{c.lastMessage.length <= 30
+															? c.lastMessage
+															: `${c.lastMessage.substring(0, 30)}...`}
+													</small>
 												</div>
 											</div>
 										</Button>

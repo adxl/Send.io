@@ -58,7 +58,9 @@ export default function Friends() {
 								<Container key={f} className="d-flex align-items-center justify-content-between  pb-2">
 									<div className="d-flex align-items-center justify-content-between w-100">
 										<div className="d-flex align-items-center">
-											<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+											<div className="ring">
+												<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+											</div>
 											<p className="pl-2">{f}</p>
 										</div>
 										<Button className="rounded-circle circle" variant="danger" type="button" value={f} onClick={handleUnfriend}>

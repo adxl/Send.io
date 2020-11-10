@@ -81,14 +81,16 @@ export default function Conversation({ username }) {
 		<>
 			{conversation
 				?	(
-					<Container className="border d-flex flex-column p-0 h-100">
-						<div className="border-bottom d-flex align-items-center p-2 ">
-							<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(conversation.friend)}&name=${conversation.friend.charAt(0)}`} alt="profile-pic" />
+					<Container className="framed border-top-0 d-flex flex-column p-0 h-100">
+						<div className="framed-bottom d-flex align-items-center p-2 bg-1">
+							<div className="ring">
+								<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(conversation.friend)}&name=${conversation.friend.charAt(0)}`} alt="profile-pic" />
+							</div>
 							<div className="pl-2">
 								<p>{conversation.friend}</p>
 							</div>
 						</div>
-						<Container id="chat-container" className=" pb-4  mt-auto">
+						<Container id="chat-container" className="pb-4 mt-auto">
 							{messages.length > 0
 								? messages.map((m) => {
 									if (m.sender === username) {
@@ -124,7 +126,7 @@ export default function Conversation({ username }) {
 													</Tooltip>
 												)}
 											>
-												<p className=" bg-light bubble bg-secondary py-1 px-2 no-stretch">{m.text}</p>
+												<p className="bubble bg-secondary py-1 px-2 no-stretch">{m.text}</p>
 											</OverlayTrigger>
 										</div>
 									);
@@ -132,10 +134,10 @@ export default function Conversation({ username }) {
 								: <p className="pb-5 text-center text-muted">No messages yet, say something</p>}
 							<div ref={conversationEnd} />
 						</Container>
-						<Form onSubmit={sendMessage} className="w-100 border-top">
+						<Form onSubmit={sendMessage} className="w-100 framed-top">
 							<Container fluid className=" d-flex align-items-end justify-content-between p-0 ">
 								<Form.Group className="m-0 w-100">
-									<Form.Control className="w-100 square border-0" required placeholder="Type a message.." ref={messageInput} type="text" />
+									<Form.Control className="w-100 square border-0 bg-3" required placeholder="Type a message.." ref={messageInput} type="text" />
 								</Form.Group>
 								<Button type="submit" className="square">
 									<FontAwesomeIcon icon={faPaperPlane} />
