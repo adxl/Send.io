@@ -42,14 +42,14 @@ export default function NewConversationModal({ hideModal, fetchConversations }) 
 
 	return (
 		<>
-			<Modal.Header closeButton>Create a new conversation</Modal.Header>
-			<Modal.Body>
+			<Modal.Header closeButton id="modal-header" className="bg-1 border-0 wt">Create a new conversation</Modal.Header>
+			<Modal.Body className="bg-2">
 				<Form onSubmit={handleSubmit}>
 					<Form.Group>
-						<Form.Control ref={friendInput} placeholder="Entre a friend name" type="text" required />
+						<Form.Control className="bg-3 border-0" ref={friendInput} placeholder="Entre a friend name" type="text" required />
 					</Form.Group>
-					<p>{alert}</p>
-					<Button type="submit">Create conversation</Button>
+					<p className="mb-2 text-danger">{alert}</p>
+					<Button type="submit" className="w-100">Create conversation</Button>
 				</Form>
 			</Modal.Body>
 		</>
