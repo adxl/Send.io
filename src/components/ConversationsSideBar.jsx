@@ -70,7 +70,7 @@ export default function ConversationsSideBar() {
 		<>
 			<Container className="border p-0">
 				<Container className="d-flex align-items-center justify-content-between border">
-					<h3>Conversations</h3>
+					<h1>Conversations</h1>
 					<Button type="button" onClick={openModal}>+</Button>
 				</Container>
 				<div className="border ">

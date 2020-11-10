@@ -47,7 +47,7 @@ export default function Friends() {
 	return (
 		<>
 			<Container className="border">
-				<h3>Friends</h3>
+				<h1>Friends</h1>
 				<br />
 				<Container className="border ">
 					{friends.length > 0

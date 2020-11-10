@@ -36,7 +36,7 @@ export default function Login({ URL }) {
 			<Container className="auth-cont d-flex align-items-center justify-content-center ">
 				<Form onSubmit={handleRegister}>
 
-					<h3 className="mb-3 text-center">Register</h3>
+					<h1 className="mb-3 text-center">Register</h1>
 
 					<Form.Group controlId="formBasicEmail" className="d-flex  justify-content-center">
 						<Form.Control ref={usernameRef} type="text" placeholder="Username" required />

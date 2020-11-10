@@ -41,6 +41,7 @@
         "react/prop-types":"off",
         "object-curly-newline":"off",
         "no-plusplus":"off",
-        "no-bitwise":"off"
+        "no-bitwise":"off",
+        "max-len":"warn"
     }
 }

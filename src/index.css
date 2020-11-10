@@ -19,6 +19,10 @@ code {
 	height: 100vh;
 }
 
+h1 {
+	font-size: 1.5rem;
+}
+
 p{
 	margin:0;
 }
@@ -50,4 +54,8 @@ p{
 .bubble{
 	border-radius: 15px;
 	display: inline-block;
+}
+
+.dborder{
+	border: solid 3px red;
 }

@@ -42,22 +42,20 @@ export default function Dashboard() {
 	};
 
 	return (
-		<Container fluid className="d-flex flex-column h-100 m-0 p-0">
+		<Container fluid className="d-flex  flex-column m-0 p-0 h-100">
 
-			<Row id="main" className="d-flex justify-content-between m-0 p-0">
-				<Col xs={9} className="p-0 h-100">
-					<Row className="m-0 h-100 d-flex flex-column ">
-						<div className="d-flex align-items-center p-2">
-							{username && <Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />}
-							<div className="pl-2">
-								<p>{username}</p>
-							</div>
-						</div>
+			<Row className="d-flex justify-content-between m-0 p-0 h-100">
+				<Col xs={9} className="p-0  h-100">
+					<Row className="m-0 h-100 d-flex ">
 						<ConversationProvider>
-							<Col xs={4} className="p-0">
+							<Col xs={4} className="p-0 dborder h-100">
+								<div className="d-flex align-items-center p-2">
+									{username && <Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />}
+									<p className="pl-2">{username}</p>
+								</div>
 								<ConversationsSideBar />
 							</Col>
-							<Col xs={8} className="p-0 h-100">
+							<Col xs={8} className="p-0 dborder h-100">
 								<Socketprovider username={username}>
 									<Conversation username={username} />
 								</Socketprovider>

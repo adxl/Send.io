@@ -86,7 +86,7 @@ export default function Conversation({ username }) {
 								<p>{conversation.friend}</p>
 							</div>
 						</div>
-						<Container id="chat-container" className="border mt-auto pb-4">
+						<Container id="chat-container" className="border pb-4  mt-auto">
 							{messages.length > 0
 								? messages.map((m) => {
 									if (m.sender === username) {

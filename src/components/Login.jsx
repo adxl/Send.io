@@ -40,7 +40,7 @@ export default function Login({ URL }) {
 			<Container className="auth-cont d-flex align-items-center justify-content-center">
 				<Form onSubmit={handleLogin}>
 
-					<h3 className="mb-3 text-center">Login</h3>
+					<h1 className="mb-3 text-center">Login</h1>
 					<p className="mb-2 mt-2 text-center text-danger">{alert}</p>
 
 					<Form.Group controlId="formBasicEmail" className="d-flex justify-content-center">

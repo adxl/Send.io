@@ -105,7 +105,7 @@ export default function Invites() {
 		<>
 			<Container className="border">
 				<Form onSubmit={handleAddFriend}>
-					<h3>Add friend</h3>
+					<h1>Add friend</h1>
 					<Form.Group className="d-flex justify-content-center">
 						<Form.Control ref={searchUsernameRef} type="text" placeholder="Username" required />
 					</Form.Group>
@@ -115,7 +115,7 @@ export default function Invites() {
 				<br />
 				{invites.length > 0 && (
 					<Container className="border">
-						<h3>Invites</h3>
+						<h1>Invites</h1>
 						{invites.map((i) => {
 							const { user } = i;
 							const avatarParams = `background=${hashColor(user)}&name=${user.charAt(0)}`;
