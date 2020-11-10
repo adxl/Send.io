@@ -127,7 +127,7 @@ export default function Invites() {
 								<Container key={user} className="d-flex align-items-center justify-content-center">
 
 									<div className="d-flex align-items-center justify-content-between w-100">
-										<div className="d-flex align-items-center">
+										<div className="d-flex justify-content-between align-items-center">
 											<Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
 											<p className="pl-2">{user}</p>
 										</div>

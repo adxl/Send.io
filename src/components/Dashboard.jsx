@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Form, Button, Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { Socketprovider } from '../contexts/SocketProvider';
 import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
 import { FriendshipsProvider } from '../contexts/FriendshipsProvider';
 import { ConversationProvider } from '../contexts/ConversationProvider';
+
 import Friends from './Friends';
 import Invites from './Invites';
 
@@ -49,9 +52,16 @@ export default function Dashboard() {
 					<Row className="m-0 h-100 d-flex ">
 						<ConversationProvider>
 							<Col xs={4} className="p-0 h-100">
-								<div className="d-flex align-items-center p-2">
-									{username && <Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />}
-									<p className="pl-2">{username}</p>
+								<div className="d-flex justify-content-between align-items-center p-2">
+									<div className="d-flex align-items-center">
+										{username && <Image roundedCircle thumbnail className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />}
+										<p className="pl-2">{username}</p>
+									</div>
+									<Form onSubmit={handleLogout}>
+										<Button type="submit">
+											<FontAwesomeIcon icon={faSignOutAlt} />
+										</Button>
+									</Form>
 								</div>
 								<br />
 								<ConversationsSideBar />
