@@ -37,19 +37,21 @@ export default function Login({ URL }) {
 
 	return (
 		<>
-			<Container className="auth-cont d-flex align-items-center justify-content-center">
+			<Container className="d-flex align-items-center justify-content-center ">
 				<Form onSubmit={handleLogin}>
 
 					<h1 className="mb-3 text-center">Login</h1>
 					<p className="mb-2 mt-2 text-center text-danger">{alert}</p>
 
 					<Form.Group controlId="formBasicEmail" className="d-flex justify-content-center">
-						<Form.Control ref={usernameRef} type="text" placeholder="Username" required />
+						<Form.Control className="bg-3 border-0" ref={usernameRef} type="text" placeholder="Username" required />
 					</Form.Group>
 
 					<Form.Group controlId="formBasicPassword">
-						<Form.Control ref={passwordRef} value="pass" type="password" placeholder="Password" required />
+						<Form.Control className="bg-3 border-0" ref={passwordRef} value="pass" type="password" placeholder="Password" required />
 					</Form.Group>
+
+					<hr />
 
 					<Button type="submit" className="w-100">Login</Button>
 
