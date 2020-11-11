@@ -6,7 +6,6 @@ import { useFriendship } from '../contexts/FriendshipsProvider';
 import { useUserPicture } from '../contexts/UserPictureProvider';
 
 const URL = 'https://send-io.herokuapp.com';
-// const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Invites() {
 	const [inviteAlert, setInviteAlert] = useState();
@@ -15,8 +14,6 @@ export default function Invites() {
 
 	const { invites, fetchInvites, fetchFriends } = useFriendship();
 	const getPicture = useUserPicture();
-
-	// console.log('refresh');
 
 	const handleAddFriend = (e) => {
 		e.preventDefault();
@@ -90,15 +87,6 @@ export default function Invites() {
 		console.log(`- ${friend}`);
 	};
 
-	// const hashColor = (str) => {
-	// 	let hash = 0;
-	// 	for (let i = 0; i < str.length; i++) {
-	// 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
-	// 	}
-	// 	const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-	// 	return '00000'.substring(0, 6 - c.length) + c;
-	// };
-
 	return (
 		<>
 			<Container className="">
@@ -120,8 +108,6 @@ export default function Invites() {
 						<h1>Invites</h1>
 						{invites.map((i) => {
 							const { user } = i;
-							// const url = getPicture(user);
-							// const avatarParams = `background=${hashColor(user)}&name=${user.charAt(0)}`;
 							return (
 								<Container key={user} className="d-flex align-items-center justify-content-center">
 

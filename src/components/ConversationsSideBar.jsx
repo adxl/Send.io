@@ -7,7 +7,6 @@ import { useConversation } from '../contexts/ConversationProvider';
 import { useUserPicture } from '../contexts/UserPictureProvider';
 
 const URL = 'https://send-io.herokuapp.com';
-// const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function ConversationsSideBar() {
 	const [conversations, setConversations] = useState([]);
@@ -58,15 +57,6 @@ export default function ConversationsSideBar() {
 	const hideModal = () => {
 		setModalOpen(false);
 	};
-
-	// const hashColor = (str) => {
-	// 	let hash = 0;
-	// 	for (let i = 0; i < str.length; i++) {
-	// 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
-	// 	}
-	// 	const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-	// 	return '00000'.substring(0, 6 - c.length) + c;
-	// };
 
 	return (
 		<>

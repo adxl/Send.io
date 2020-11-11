@@ -8,7 +8,6 @@ import { useConversation } from '../contexts/ConversationProvider';
 import { useUserPicture } from '../contexts/UserPictureProvider';
 
 const URL = 'https://send-io.herokuapp.com';
-// const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Conversation({ username }) {
 	const [messages, setMessages] = useState([]);
@@ -20,10 +19,7 @@ export default function Conversation({ username }) {
 	const { conversation } = useConversation();
 	const getPicture = useUserPicture();
 
-	// console.log('in conv ', conversation);
-
 	const fetchMessages = () => {
-		// console.log('will fetch');
 		if (conversation) {
 			const { friend } = conversation;
 			fetch(`${URL}/conversations/${friend}/messages`, {
@@ -34,7 +30,6 @@ export default function Conversation({ username }) {
 				.then((response) => response.json())
 				.then((data) => {
 					setMessages(data);
-					// console.log(data);
 					if (conversationEnd) {
 						conversationEnd.current.scrollIntoView({ behavior: 'auto' });
 					}
@@ -51,7 +46,6 @@ export default function Conversation({ username }) {
 		e.preventDefault();
 		const message = {
 			conversationId: conversation.id,
-			// friend: conversation.friend,
 			sender: username,
 			text: messageInput.current.value,
 		};
@@ -61,23 +55,12 @@ export default function Conversation({ username }) {
 	}
 
 	useEffect(() => {
-		// console.log(socket);
 		if (socket) {
 			socket.on('receive-message', () => {
-				// console.log('emit');
 				fetchMessages();
 			});
 		}
 	}, [socket]);
-
-	// const hashColor = (str) => {
-	// 	let hash = 0;
-	// 	for (let i = 0; i < str.length; i++) {
-	// 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
-	// 	}
-	// 	const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-	// 	return '00000'.substring(0, 6 - c.length) + c;
-	// };
 
 	return (
 		<>
@@ -99,8 +82,6 @@ export default function Conversation({ username }) {
 										return (
 											<div className="d-flex align-items-center justify-content-end mb-1 " key={m.id}>
 
-												{/* <small className="text-muted">{m.createdAt.time}</small> */}
-
 												<OverlayTrigger
 													placement="right"
 													delay={{ show: 50, hide: 0 }}
@@ -118,7 +99,6 @@ export default function Conversation({ username }) {
 									}
 									return (
 										<div className="d-flex align-items-center justify-content-start mb-1" key={m.id}>
-											{/* <small className="text-muted">{m.createdAt.time}</small> */}
 											<OverlayTrigger
 												placement="left"
 												delay={{ show: 50, hide: 0 }}

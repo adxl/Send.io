@@ -44,41 +44,36 @@ export default function Friends() {
 					<Container className=" ">
 						<h1>Friends</h1>
 
-						{friends.map((f) =>
-							// const url = getPicture(f);
-							// console.log(getPicture);
-							// console.log(url);
-							// eslint-disable-next-line implicit-arrow-linebreak
-							(
-								<Container key={f} className="d-flex align-items-center justify-content-between  pb-2">
-									<div className="d-flex align-items-center justify-content-between w-100">
-										<div className="d-flex align-items-center">
-											<div className="ring">
-												<Image roundedCircle className="no-tiny" src={getPicture(f)} alt="profile-pic" />
-											</div>
-											<p className="pl-2">{f}</p>
+						{friends.map((f) => (
+							<Container key={f} className="d-flex align-items-center justify-content-between  pb-2">
+								<div className="d-flex align-items-center justify-content-between w-100">
+									<div className="d-flex align-items-center">
+										<div className="ring">
+											<Image roundedCircle className="no-tiny" src={getPicture(f)} alt="profile-pic" />
 										</div>
-
-										<div
-											onMouseEnter={() => toggleAllowUnfriend(f)}
-											onMouseLeave={() => toggleAllowUnfriend(false)}
-										>
-											{ unfriend === f
-												? (
-													<Button className="rounded-circle circle" variant="danger" type="button" onClick={() => handleUnfriend(f)}>
-														<FontAwesomeIcon icon={faUserSlash} />
-													</Button>
-												)
-												: (
-													<Button className="wt" variant="transparent" type="button">
-														<FontAwesomeIcon icon={faEllipsisV} />
-													</Button>
-												)}
-										</div>
-
+										<p className="pl-2">{f}</p>
 									</div>
-								</Container>
-							))}
+
+									<div
+										onMouseEnter={() => toggleAllowUnfriend(f)}
+										onMouseLeave={() => toggleAllowUnfriend(false)}
+									>
+										{ unfriend === f
+											? (
+												<Button className="rounded-circle circle" variant="danger" type="button" onClick={() => handleUnfriend(f)}>
+													<FontAwesomeIcon icon={faUserSlash} />
+												</Button>
+											)
+											: (
+												<Button className="wt" variant="transparent" type="button">
+													<FontAwesomeIcon icon={faEllipsisV} />
+												</Button>
+											)}
+									</div>
+
+								</div>
+							</Container>
+						))}
 					</Container>
 				)}
 		</>

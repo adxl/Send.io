@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 
 const UserPictureContext = React.createContext();
 
@@ -17,6 +17,7 @@ export default function UserPictureProvider({ children }) {
 		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
 		return '00000'.substring(0, 6 - c.length) + c;
 	};
+
 	const getPicture = (name) => {
 		console.log(name);
 		const color = hashColor(name);

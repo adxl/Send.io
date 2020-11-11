@@ -8,12 +8,10 @@ import ConversationsSideBar from './ConversationsSideBar';
 import { FriendshipsProvider } from '../contexts/FriendshipsProvider';
 import { ConversationProvider } from '../contexts/ConversationProvider';
 import { useUserPicture } from '../contexts/UserPictureProvider';
-
 import Friends from './Friends';
 import Invites from './Invites';
 
 const URL = 'https://send-io.herokuapp.com';
-// const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Dashboard() {
 	const [username, setUsername] = useState();
@@ -36,15 +34,6 @@ export default function Dashboard() {
 		localStorage.removeItem('send-io-usertoken');
 		localStorage.removeItem('send-io-current-conversation');
 	};
-
-	// const hashColor = (str) => {
-	// 	let hash = 0;
-	// 	for (let i = 0; i < str.length; i++) {
-	// 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
-	// 	}
-	// 	const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-	// 	return '00000'.substring(0, 6 - c.length) + c;
-	// };
 
 	return (
 		<Container fluid className="d-flex  flex-column m-0 p-0 h-100 bg-3">

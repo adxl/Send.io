@@ -5,7 +5,6 @@ import Dashboard from './Dashboard';
 
 export default function App() {
 	const userToken = localStorage.getItem('send-io-usertoken');
-	// const getPicture = useUserPicture();
 	return (
 		<>
 			{ userToken

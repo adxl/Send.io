@@ -18,13 +18,8 @@ export function Socketprovider({ username, children }) {
 
 	const { conversation } = useConversation();
 
-	// useEffect(() => {
-	// 	setId(localStorage.getItem('send-io-usertoken'));
-	// }, []);
-
 	useEffect(() => {
 		if (conversation) {
-			// console.log(`Socket?${conversation.id}`);
 			const newSocket = io(
 				URL,
 				{

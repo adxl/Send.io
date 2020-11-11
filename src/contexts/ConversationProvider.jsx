@@ -11,8 +11,6 @@ const getCurrentConversation = () => JSON.parse(localStorage.getItem('send-io-cu
 export function ConversationProvider({ children }) {
 	const [conversation, setConversation] = useState(() => getCurrentConversation());
 
-	// console.log(conversation);
-
 	const selectConversation = (c) => {
 		setConversation(c);
 		const currentConversation = JSON.stringify(c);
