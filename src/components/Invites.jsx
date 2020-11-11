@@ -120,7 +120,7 @@ export default function Invites() {
 						<h1>Invites</h1>
 						{invites.map((i) => {
 							const { user } = i;
-							const url = getPicture(user);
+							// const url = getPicture(user);
 							// const avatarParams = `background=${hashColor(user)}&name=${user.charAt(0)}`;
 							return (
 								<Container key={user} className="d-flex align-items-center justify-content-center">
@@ -128,7 +128,7 @@ export default function Invites() {
 									<div className="d-flex align-items-center justify-content-between w-100">
 										<div className="d-flex justify-content-between align-items-center">
 											<div className="ring">
-												<Image roundedCircle className="no-tiny" src={url} alt="profile-pic" />
+												<Image roundedCircle className="no-tiny" src={getPicture(user)} alt="profile-pic" />
 											</div>
 											<p className="pl-2">{user}</p>
 										</div>

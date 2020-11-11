@@ -44,16 +44,17 @@ export default function Friends() {
 					<Container className=" ">
 						<h1>Friends</h1>
 
-						{friends.map((f) => {
-							const url = getPicture(f);
+						{friends.map((f) =>
+							// const url = getPicture(f);
 							// console.log(getPicture);
 							// console.log(url);
-							return (
+							// eslint-disable-next-line implicit-arrow-linebreak
+							(
 								<Container key={f} className="d-flex align-items-center justify-content-between  pb-2">
 									<div className="d-flex align-items-center justify-content-between w-100">
 										<div className="d-flex align-items-center">
 											<div className="ring">
-												<Image roundedCircle className="no-tiny" src={url} alt="profile-pic" />
+												<Image roundedCircle className="no-tiny" src={getPicture(f)} alt="profile-pic" />
 											</div>
 											<p className="pl-2">{f}</p>
 										</div>
@@ -77,8 +78,7 @@ export default function Friends() {
 
 									</div>
 								</Container>
-							);
-						})}
+							))}
 					</Container>
 				)}
 		</>

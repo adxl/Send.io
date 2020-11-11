@@ -84,7 +84,6 @@ export default function ConversationsSideBar() {
 								id: c.id,
 								friend: c.friend,
 							};
-							const url = getPicture(c.friend);
 
 							return (
 								<Container key={c.id} className="d-flex align-items-center justify-content-between">
@@ -92,7 +91,7 @@ export default function ConversationsSideBar() {
 										<Button variant="white" className=" w-100 text-left" onClick={() => selectConversation(conversationObject)}>
 											<div className="d-flex align-items-center ">
 												<div className="ring">
-													<Image roundedCircle className="no-tiny" src={url} alt="profile-pic" />
+													<Image roundedCircle className="no-tiny" src={getPicture(c.friend)} alt="profile-pic" />
 												</div>
 												<div className="pl-2">
 													<p className="wt">{c.friend}</p>
