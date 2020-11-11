@@ -4,14 +4,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import NewConversationModal from './NewConversationModal';
 import { useConversation } from '../contexts/ConversationProvider';
+import { useUserPicture } from '../contexts/UserPictureProvider';
 
 const URL = 'https://send-io.herokuapp.com';
-const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
+// const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function ConversationsSideBar() {
 	const [conversations, setConversations] = useState([]);
 	const [modalOpen, setModalOpen] = useState(false);
 	const { selectConversation } = useConversation();
+	const getPicture = useUserPicture();
 
 	const fetchConversations = () => {
 		fetch(`${URL}/conversations`, {
@@ -57,14 +59,14 @@ export default function ConversationsSideBar() {
 		setModalOpen(false);
 	};
 
-	const hashColor = (str) => {
-		let hash = 0;
-		for (let i = 0; i < str.length; i++) {
-			hash = str.charCodeAt(i) + ((hash << 5) - hash);
-		}
-		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-		return '00000'.substring(0, 6 - c.length) + c;
-	};
+	// const hashColor = (str) => {
+	// 	let hash = 0;
+	// 	for (let i = 0; i < str.length; i++) {
+	// 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
+	// 	}
+	// 	const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+	// 	return '00000'.substring(0, 6 - c.length) + c;
+	// };
 
 	return (
 		<>
@@ -82,14 +84,15 @@ export default function ConversationsSideBar() {
 								id: c.id,
 								friend: c.friend,
 							};
-							const avatarParams = `background=${hashColor(c.friend)}&name=${c.friend.charAt(0)}`;
+							const url = getPicture(c.friend);
+
 							return (
 								<Container key={c.id} className="d-flex align-items-center justify-content-between">
 									<p className=" w-100">
 										<Button variant="white" className=" w-100 text-left" onClick={() => selectConversation(conversationObject)}>
 											<div className="d-flex align-items-center ">
 												<div className="ring">
-													<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+													<Image roundedCircle className="no-tiny" src={url} alt="profile-pic" />
 												</div>
 												<div className="pl-2">
 													<p className="wt">{c.friend}</p>

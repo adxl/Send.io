@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { useSocket } from '../contexts/SocketProvider';
 import { useConversation } from '../contexts/ConversationProvider';
+import { useUserPicture } from '../contexts/UserPictureProvider';
 
 const URL = 'https://send-io.herokuapp.com';
-const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
+// const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Conversation({ username }) {
 	const [messages, setMessages] = useState([]);
@@ -17,6 +18,7 @@ export default function Conversation({ username }) {
 
 	const socket = useSocket();
 	const { conversation } = useConversation();
+	const getPicture = useUserPicture();
 
 	// console.log('in conv ', conversation);
 
@@ -68,14 +70,14 @@ export default function Conversation({ username }) {
 		}
 	}, [socket]);
 
-	const hashColor = (str) => {
-		let hash = 0;
-		for (let i = 0; i < str.length; i++) {
-			hash = str.charCodeAt(i) + ((hash << 5) - hash);
-		}
-		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-		return '00000'.substring(0, 6 - c.length) + c;
-	};
+	// const hashColor = (str) => {
+	// 	let hash = 0;
+	// 	for (let i = 0; i < str.length; i++) {
+	// 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
+	// 	}
+	// 	const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+	// 	return '00000'.substring(0, 6 - c.length) + c;
+	// };
 
 	return (
 		<>
@@ -84,7 +86,7 @@ export default function Conversation({ username }) {
 					<Container className="framed border-top-0 d-flex flex-column p-0 h-100">
 						<div className="framed-bottom d-flex align-items-center p-2 bg-1">
 							<div className="ring">
-								<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(conversation.friend)}&name=${conversation.friend.charAt(0)}`} alt="profile-pic" />
+								<Image roundedCircle className="no-tiny" src={getPicture(conversation.friend)} alt="profile-pic" />
 							</div>
 							<div className="pl-2">
 								<p>{conversation.friend}</p>

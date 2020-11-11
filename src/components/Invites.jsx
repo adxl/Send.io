@@ -3,18 +3,20 @@ import { Container, Form, Button, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserPlus, faTrashAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useFriendship } from '../contexts/FriendshipsProvider';
+import { useUserPicture } from '../contexts/UserPictureProvider';
 
 const URL = 'https://send-io.herokuapp.com';
-const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
+// const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Invites() {
-	const { invites, fetchInvites, fetchFriends } = useFriendship();
-
 	const [inviteAlert, setInviteAlert] = useState();
 
 	const searchUsernameRef = useRef();
 
-	console.log('refresh');
+	const { invites, fetchInvites, fetchFriends } = useFriendship();
+	const getPicture = useUserPicture();
+
+	// console.log('refresh');
 
 	const handleAddFriend = (e) => {
 		e.preventDefault();
@@ -88,14 +90,14 @@ export default function Invites() {
 		console.log(`- ${friend}`);
 	};
 
-	const hashColor = (str) => {
-		let hash = 0;
-		for (let i = 0; i < str.length; i++) {
-			hash = str.charCodeAt(i) + ((hash << 5) - hash);
-		}
-		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-		return '00000'.substring(0, 6 - c.length) + c;
-	};
+	// const hashColor = (str) => {
+	// 	let hash = 0;
+	// 	for (let i = 0; i < str.length; i++) {
+	// 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
+	// 	}
+	// 	const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+	// 	return '00000'.substring(0, 6 - c.length) + c;
+	// };
 
 	return (
 		<>
@@ -118,14 +120,15 @@ export default function Invites() {
 						<h1>Invites</h1>
 						{invites.map((i) => {
 							const { user } = i;
-							const avatarParams = `background=${hashColor(user)}&name=${user.charAt(0)}`;
+							const url = getPicture(user);
+							// const avatarParams = `background=${hashColor(user)}&name=${user.charAt(0)}`;
 							return (
 								<Container key={user} className="d-flex align-items-center justify-content-center">
 
 									<div className="d-flex align-items-center justify-content-between w-100">
 										<div className="d-flex justify-content-between align-items-center">
 											<div className="ring">
-												<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&${avatarParams}`} alt="profile-pic" />
+												<Image roundedCircle className="no-tiny" src={url} alt="profile-pic" />
 											</div>
 											<p className="pl-2">{user}</p>
 										</div>

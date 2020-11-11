@@ -7,15 +7,17 @@ import Conversation from './Conversation';
 import ConversationsSideBar from './ConversationsSideBar';
 import { FriendshipsProvider } from '../contexts/FriendshipsProvider';
 import { ConversationProvider } from '../contexts/ConversationProvider';
+import { useUserPicture } from '../contexts/UserPictureProvider';
 
 import Friends from './Friends';
 import Invites from './Invites';
 
 const URL = 'https://send-io.herokuapp.com';
-const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
+// const AVATAR_URL = 'https://eu.ui-avatars.com/api/?size=500&color=fff';
 
 export default function Dashboard() {
 	const [username, setUsername] = useState();
+	const getPicture = useUserPicture();
 
 	useEffect(() => {
 		fetch(`${URL}/users/me`, {
@@ -35,18 +37,17 @@ export default function Dashboard() {
 		localStorage.removeItem('send-io-current-conversation');
 	};
 
-	const hashColor = (str) => {
-		let hash = 0;
-		for (let i = 0; i < str.length; i++) {
-			hash = str.charCodeAt(i) + ((hash << 5) - hash);
-		}
-		const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
-		return '00000'.substring(0, 6 - c.length) + c;
-	};
+	// const hashColor = (str) => {
+	// 	let hash = 0;
+	// 	for (let i = 0; i < str.length; i++) {
+	// 		hash = str.charCodeAt(i) + ((hash << 5) - hash);
+	// 	}
+	// 	const c = (hash & 0x00FFFFFF).toString(16).toUpperCase();
+	// 	return '00000'.substring(0, 6 - c.length) + c;
+	// };
 
 	return (
 		<Container fluid className="d-flex  flex-column m-0 p-0 h-100 bg-3">
-
 			<Row className="d-flex justify-content-between m-0 p-0 h-100">
 				<Col xs={9} className="p-0  h-100">
 					<Row className="m-0 h-100 d-flex ">
@@ -57,7 +58,7 @@ export default function Dashboard() {
 										{username
 										&& (
 											<div className="ring">
-												<Image roundedCircle className="no-tiny" src={`${AVATAR_URL}&background=${hashColor(username)}&name=${username.charAt(0)}`} alt="profile-pic" />
+												<Image roundedCircle className="no-tiny" src={getPicture(username)} alt="profile-pic" />
 											</div>
 										)}
 										<p className="pl-2">{username}</p>
