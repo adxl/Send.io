@@ -14,6 +14,8 @@ export default function Invites() {
 
 	const searchUsernameRef = useRef();
 
+	console.log('refresh');
+
 	const handleAddFriend = (e) => {
 		e.preventDefault();
 
@@ -39,47 +41,14 @@ export default function Invites() {
 			.catch((error) => { throw error; });
 	};
 
-	const handleDenyRequest = (e) => {
-		e.preventDefault();
-
-		const data = {
-			friend: e.target.value,
-		};
-
+	const handleAcceptRequest = (friend) => {
 		const options = {
 			method: 'POST',
 			headers: {
 				Authorization: localStorage.getItem('send-io-usertoken'),
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(data),
-		};
-
-		fetch(`${URL}/invites/deny`, options)
-			.then((response) => {
-				if (response.ok) {
-					fetchInvites();
-				} else {
-					throw new Error('An error occured');
-				}
-			})
-			.catch((error) => { throw error; });
-	};
-
-	const handleAcceptRequest = (e) => {
-		e.preventDefault();
-
-		const data = {
-			friend: e.target.value,
-		};
-
-		const options = {
-			method: 'POST',
-			headers: {
-				Authorization: localStorage.getItem('send-io-usertoken'),
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
+			body: JSON.stringify({ friend }),
 		};
 
 		fetch(`${URL}/invites/accept`, options)
@@ -92,6 +61,31 @@ export default function Invites() {
 				}
 			})
 			.catch((error) => { throw error; });
+
+		console.log(`+ ${friend}`);
+	};
+
+	const handleDenyRequest = (friend) => {
+		const options = {
+			method: 'POST',
+			headers: {
+				Authorization: localStorage.getItem('send-io-usertoken'),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ friend }),
+		};
+
+		fetch(`${URL}/invites/deny`, options)
+			.then((response) => {
+				if (response.ok) {
+					fetchInvites();
+				} else {
+					throw new Error('An error occured');
+				}
+			})
+			.catch((error) => { throw error; });
+
+		console.log(`- ${friend}`);
 	};
 
 	const hashColor = (str) => {
@@ -136,10 +130,10 @@ export default function Invites() {
 											<p className="pl-2">{user}</p>
 										</div>
 										<div className="d-flex align-items-center">
-											<Button className="rounded-circle circle mr-2" variant="success" type="button" value={user} onClick={handleAcceptRequest}>
+											<Button className="rounded-circle circle mr-2" variant="success" type="button" onClick={() => handleAcceptRequest(user)}>
 												<FontAwesomeIcon icon={faCheck} />
 											</Button>
-											<Button className="rounded-circle circle" variant="danger" type="button" value={user} onClick={handleDenyRequest}>
+											<Button className="rounded-circle circle" variant="danger" type="button" onClick={() => handleDenyRequest(user)}>
 												<FontAwesomeIcon icon={faTrashAlt} />
 											</Button>
 										</div>

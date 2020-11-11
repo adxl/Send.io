@@ -11,20 +11,14 @@ export default function Friends() {
 	const [unfriend, setUnfriend] = useState();
 	const { friends, fetchFriends } = useFriendship();
 
-	const handleUnfriend = (e) => {
-		e.preventDefault();
-
-		const data = {
-			friend: e.target.value,
-		};
-
+	const handleUnfriend = (friend) => {
 		const options = {
 			method: 'POST',
 			headers: {
 				Authorization: localStorage.getItem('send-io-usertoken'),
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(data),
+			body: JSON.stringify({ friend }),
 		};
 
 		fetch(`${URL}/friends/unfriend`, options)
@@ -76,15 +70,15 @@ export default function Friends() {
 										>
 											{ unfriend === f
 												? (
-													<Button className="rounded-circle circle" variant="danger" type="button" value={f} onClick={handleUnfriend}>
+													<Button className="rounded-circle circle" variant="danger" type="button" onClick={() => handleUnfriend(f)}>
 														<FontAwesomeIcon icon={faUserSlash} />
 													</Button>
 												)
 												: (
-													<Button className="wt" variant="transparent" type="button" value={f} onClick={handleUnfriend}>
+													<Button className="wt" variant="transparent" type="button">
 														<FontAwesomeIcon icon={faEllipsisV} />
 													</Button>
-												)											}
+												)}
 										</div>
 
 									</div>

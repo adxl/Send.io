@@ -30,9 +30,7 @@ export default function ConversationsSideBar() {
 		fetchConversations();
 	}, []);
 
-	const deleteConversation = (e) => {
-		const friend = e.target.value;
-
+	const deleteConversation = (friend) => {
 		const options = {
 			method: 'DELETE',
 			headers: {
@@ -105,10 +103,7 @@ export default function ConversationsSideBar() {
 										</Button>
 
 									</p>
-									{
-									// eslint-disable-next-line max-len
-									/* <Button type="button" value={c.friend} variant="danger" onClick={deleteConversation}>X</Button> */
-									}
+									<Button type="button" variant="danger" onClick={() => deleteConversation(c.friend)}>X</Button>
 								</Container>
 							);
 						})
