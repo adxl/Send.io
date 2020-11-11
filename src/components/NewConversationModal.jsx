@@ -31,7 +31,7 @@ export default function NewConversationModal({ hideModal, fetchConversations }) 
 				return response.text();
 			})
 			.then((message) => setAlert(message))
-			.catch((error) => { console.log(error); });
+			.catch(() => { setAlert('An error occured, please try again'); });
 	};
 
 	const handleSubmit = (e) => {

@@ -19,7 +19,6 @@ export default function UserPictureProvider({ children }) {
 	};
 
 	const getPicture = (name) => {
-		console.log(name);
 		const color = hashColor(name);
 		const params = `&background=${color}&name=${name.charAt(0)}`;
 		const url = AVATAR_BASE_URL + params;

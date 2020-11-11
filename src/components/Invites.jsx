@@ -60,8 +60,6 @@ export default function Invites() {
 				}
 			})
 			.catch((error) => { throw error; });
-
-		console.log(`+ ${friend}`);
 	};
 
 	const handleDenyRequest = (friend) => {
@@ -83,8 +81,6 @@ export default function Invites() {
 				}
 			})
 			.catch((error) => { throw error; });
-
-		console.log(`- ${friend}`);
 	};
 
 	return (

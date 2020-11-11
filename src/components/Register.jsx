@@ -54,15 +54,15 @@ export default function Login({ URL }) {
 					<h1 className="mb-3 text-center">Register</h1>
 					<p className="mb-2 mt-2 text-center text-danger">{alert}</p>
 
-					<Form.Group controlId="formBasicEmail" className="d-flex  justify-content-center">
+					<Form.Group className="d-flex justify-content-center">
 						<Form.Control autoComplete="off" className="bg-3 border-0 mb-3" ref={usernameRef} type="text" placeholder="Username" required />
 					</Form.Group>
 
-					<Form.Group controlId="formBasicPassword">
+					<Form.Group>
 						<Form.Control className="bg-3 border-0" ref={passwordRef} type="password" placeholder="Password" required />
 					</Form.Group>
 
-					<Form.Group controlId="formBasicPassword">
+					<Form.Group>
 						<Form.Control className="bg-3 border-0" onChange={checkPasswords} ref={passwordConfirmationRef} type="password" placeholder="Password confirmation" required />
 					</Form.Group>
 
