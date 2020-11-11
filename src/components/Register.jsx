@@ -35,7 +35,7 @@ export default function Login({ URL }) {
 		}).catch((error) => { throw error; });
 	};
 
-	const checkPasswords = (e) => {
+	const checkPasswords = () => {
 		const password = passwordRef.current.value;
 		const passwordConfirmation = passwordConfirmationRef.current.value;
 		if (password !== passwordConfirmation) {

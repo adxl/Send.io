@@ -31,24 +31,24 @@ export default function ConversationsSideBar() {
 		fetchConversations();
 	}, []);
 
-	const deleteConversation = (friend) => {
-		const options = {
-			method: 'DELETE',
-			headers: {
-				Authorization: localStorage.getItem('send-io-usertoken'),
-				'Content-Type': 'application/json',
-			},
-		};
+	// const deleteConversation = (friend) => {
+	// 	const options = {
+	// 		method: 'DELETE',
+	// 		headers: {
+	// 			Authorization: localStorage.getItem('send-io-usertoken'),
+	// 			'Content-Type': 'application/json',
+	// 		},
+	// 	};
 
-		fetch(`${URL}/conversations/${friend}`, options)
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error('Error');
-				}
-				fetchConversations();
-			})
-			.catch((error) => { console.log(error); });
-	};
+	// 	fetch(`${URL}/conversations/${friend}`, options)
+	// 		.then((response) => {
+	// 			if (!response.ok) {
+	// 				throw new Error('Error');
+	// 			}
+	// 			fetchConversations();
+	// 		})
+	// 		.catch((error) => { console.log(error); });
+	// };
 
 	const openModal = () => {
 		setModalOpen(true);
@@ -95,7 +95,8 @@ export default function ConversationsSideBar() {
 										</Button>
 
 									</p>
-									<Button type="button" variant="danger" onClick={() => deleteConversation(c.friend)}>X</Button>
+									{/* <Button type="button" variant="danger"
+									onClick={() => deleteConversation(c.friend)}>X</Button> */}
 								</Container>
 							);
 						})
