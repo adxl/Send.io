@@ -69,9 +69,9 @@ export default function Dashboard() {
 						</ConversationProvider>
 					</Row>
 				</Col>
-				<Col xs={3} className="p-0 pt-5 bg-1">
+				<Col xs={3} className="p-0 pt-5 bg-1 h-100">
 					<FriendshipsProvider>
-						<Container className="d-flex flex-column p-0">
+						<Container className="d-flex flex-column align-items-center p-0 h-100">
 							<Invites />
 							<hr />
 							<Friends />

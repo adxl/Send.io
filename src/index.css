@@ -81,12 +81,18 @@ p{
 	margin:0;
 }
 
-#chat-container::-webkit-scrollbar {
+.scroll{
+	overflow-y: scroll;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.scroll::-webkit-scrollbar {
 	display: none;
 	overflow-y: scroll;
 }
   
-#chat-container {
+.chat-container {
 	overflow-y: scroll;
 	-ms-overflow-style: none;  /* IE and Edge */
 	scrollbar-width: none;  /* Firefox */

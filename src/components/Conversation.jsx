@@ -75,7 +75,7 @@ export default function Conversation({ username }) {
 								<p>{conversation.friend}</p>
 							</div>
 						</div>
-						<Container id="chat-container" className="pb-4 mt-auto">
+						<Container className="pb-4 mt-auto scroll">
 							{messages.length > 0
 								? messages.map((m) => {
 									if (m.sender === username) {

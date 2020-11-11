@@ -41,7 +41,7 @@ export default function Friends() {
 		<>
 			{friends.length > 0
 				&& (
-					<Container className=" ">
+					<Container className="scroll">
 						<h1>Friends</h1>
 
 						{friends.map((f) => (

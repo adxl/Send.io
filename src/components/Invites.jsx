@@ -85,7 +85,7 @@ export default function Invites() {
 
 	return (
 		<>
-			<Container className="">
+			<Container className="d-flex flex-column h-50">
 				<h1>Add friend</h1>
 				<Form onSubmit={handleAddFriend} className="w-100">
 					<Container className="d-flex justify-content-between pl-2">
@@ -100,7 +100,7 @@ export default function Invites() {
 				</Form>
 				<br />
 				{invites.length > 0 && (
-					<Container className=" py-2 px-0">
+					<Container className="h-100 py-2 px-0 scroll mb-auto framed-bottom">
 						<h1>Invites</h1>
 						{invites.map((i) => {
 							const { user } = i;
