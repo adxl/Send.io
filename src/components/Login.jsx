@@ -7,7 +7,7 @@ export default function Login({ URL }) {
 	const usernameRef = useRef();
 	const passwordRef = useRef();
 
-	const handleLogin = (e) => {
+	const handleLogin = async (e) => {
 		e.preventDefault();
 
 		const data = {
@@ -21,18 +21,15 @@ export default function Login({ URL }) {
 			body: JSON.stringify(data),
 		};
 
-		fetch(`${URL}/login`, options).then((response) => {
-			if (response.ok) {
-				return response.text();
-			}
-			setAlert('Wrong username and/or password');
-			throw new Error('BAD REQUEST');
-		}).then((token) => {
-			if (token) {
-				localStorage.setItem('send-io-usertoken', token);
-				window.location.reload();
-			}
-		}).catch((error) => { console.log(error); });
+		const response = await fetch(`${URL}/login`, options);
+		if (response.ok) {
+			const token = await response.text();
+			localStorage.setItem('send-io-usertoken', token);
+			window.location.reload();
+		} else {
+			const error = await response.text();
+			setAlert(error);
+		}
 	};
 
 	return (

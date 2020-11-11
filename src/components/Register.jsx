@@ -9,7 +9,7 @@ export default function Login({ URL }) {
 	const passwordRef = useRef();
 	const passwordConfirmationRef = useRef();
 
-	const handleRegister = (e) => {
+	const handleRegister = async (e) => {
 		e.preventDefault();
 
 		const data = {
@@ -23,16 +23,15 @@ export default function Login({ URL }) {
 			body: JSON.stringify(data),
 		};
 
-		fetch(`${URL}/register`, options).then((response) => {
-			if (response.ok) {
-				return response.text(); // token
-			} throw new Error('An error occured');
-		}).then((token) => {
-			if (token) {
-				localStorage.setItem('send-io-usertoken', token);
-				window.location.reload();
-			}
-		}).catch((error) => { throw error; });
+		const response = await fetch(`${URL}/register`, options);
+		if (response.ok) {
+			const token = await response.text();
+			localStorage.setItem('send-io-usertoken', token);
+			window.location.reload();
+		} else {
+			const error = await response.text();
+			setAlert(error);
+		}
 	};
 
 	const checkPasswords = () => {
