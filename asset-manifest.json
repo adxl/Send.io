@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Send.io/static/css/main.77d7c460.chunk.css",
+    "main.js": "/Send.io/static/js/main.d6981ee4.chunk.js",
+    "main.js.map": "/Send.io/static/js/main.d6981ee4.chunk.js.map",
+    "runtime-main.js": "/Send.io/static/js/runtime-main.787749d7.js",
+    "runtime-main.js.map": "/Send.io/static/js/runtime-main.787749d7.js.map",
+    "static/css/2.20aa2d7b.chunk.css": "/Send.io/static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.4b571b48.chunk.js": "/Send.io/static/js/2.4b571b48.chunk.js",
+    "static/js/2.4b571b48.chunk.js.map": "/Send.io/static/js/2.4b571b48.chunk.js.map",
+    "index.html": "/Send.io/index.html",
+    "static/css/2.20aa2d7b.chunk.css.map": "/Send.io/static/css/2.20aa2d7b.chunk.css.map",
+    "static/css/main.77d7c460.chunk.css.map": "/Send.io/static/css/main.77d7c460.chunk.css.map",
+    "static/js/2.4b571b48.chunk.js.LICENSE.txt": "/Send.io/static/js/2.4b571b48.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.787749d7.js",
+    "static/css/2.20aa2d7b.chunk.css",
+    "static/js/2.4b571b48.chunk.js",
+    "static/css/main.77d7c460.chunk.css",
+    "static/js/main.d6981ee4.chunk.js"
+  ]
+}
